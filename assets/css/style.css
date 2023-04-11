@@ -6,15 +6,15 @@ body {
     margin: 0 5cm;
 }
 
-nav {
+header, nav {
     display: flex;
     justify-content: space-between;
 }
     
-nav * a {
+header nav * a {
     text-decoration: none;
 }
 
-nav ul {
+header nav ul {
     list-style: none;
 }
