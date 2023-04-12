@@ -3,18 +3,38 @@ body {
 }
 
 .content-margin {
-    margin: 0 5cm;
+    margin: 0 clamp(0px , 180px, 200px);
 }
 
-header, nav {
+header, nav ul{
     display: flex;
     justify-content: space-between;
+    gap: clamp(10px, 40px, 50px);
 }
-    
-header nav * a {
+a {
     text-decoration: none;
+    
 }
 
 header nav ul {
     list-style: none;
 }
+header div{
+    display:flex;
+    justify-content: center;
+    align-items:center; 
+}
+.login-button{
+    padding: 10px 30px;
+    background-color:#8bc34a;
+    border-radius: 30px;
+}
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    background-color: #fff;
+    padding: 10px 0;
+  } 
