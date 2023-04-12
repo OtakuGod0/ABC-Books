@@ -11,7 +11,7 @@ header, nav ul{
     justify-content: space-between;
     gap: clamp(10px, 40px, 50px);
 }
-a {
+header a {
     text-decoration: none;
     
 }
