@@ -5,6 +5,15 @@ body {
 .content-margin {
     margin: 0 clamp(0px , 180px, 200px);
 }
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    background-color: #fff;
+    padding: 10px 0;
+  } 
 
 header, nav ul{
     display: flex;
@@ -15,26 +24,18 @@ header a {
     text-decoration: none;
     
 }
-
-header nav ul {
-    list-style: none;
-}
-header div{
+header > div{
     display:flex;
     justify-content: center;
     align-items:center; 
 }
+
+nav ul {
+    list-style: none;
+}
+
 .login-button{
     padding: 10px 30px;
     background-color:#8bc34a;
     border-radius: 30px;
 }
-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 999;
-    background-color: #fff;
-    padding: 10px 0;
-  } 
