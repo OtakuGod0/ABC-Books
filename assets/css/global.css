@@ -1,31 +1,28 @@
 :root{
-    --content-margin: 0 clamp(0px , 180px, 200px);
+    --content-margin: 180px;
 }
+
+/* ------------------------------- Margin & size ------------------------------- */
 body {
     margin: 0;
-    
 }
 main {
-    height:100vh;
-    width:100vw;
-    position:fixed;
-    background-repeat:no-repeat;
-    background-position:center;
-    background-size:cover;
-    background-attachment: fixed;
-    z-index: 0;
+    width: calc(100vw-var(var(--content-margin)));
 }
-.content-margin {
-    margin: var(--content-margin);
+.content-margin{
+    margin: 0 var(--content-margin);
 }
+
+/* --------------------------------- nav bar CSS -------------------------------------- */
 header {
     position: fixed;
-    top: 0;
+    top: 10px;
     left: 0;
     right: 0;
     z-index: 999;
-    background-color: #fff;
-    padding: 10px 0;
+    background-color: rgba(0,0,0,0.4);
+    border-radius:20px;
+    padding: 10px 40px;
   } 
 
 header, nav ul{
@@ -35,6 +32,7 @@ header, nav ul{
 }
 header a {
     text-decoration: none;
+    color:white;
     
 }
 header > div{
@@ -43,7 +41,7 @@ header > div{
     align-items:center; 
 }
 
-nav ul {
+header nav ul {
     list-style: none;
 }
 
@@ -51,4 +49,24 @@ nav ul {
     padding: 10px 30px;
     background-color:#8bc34a;
     border-radius: 30px;
+}
+
+/* -------------------------- Global Content Css ------------------------------ */
+.content { 
+    width:100%;
+    height:80vh;
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+}
+/* --------------------------- Background ----------------------------------- */
+.background{
+    position:absolute;
+    top:0;
+    left:0;
+    height:100vh;
+    width:100vw;
+    background-position:center;
+    background-repeat: no-repeat;
+    background-size:cover;
+    background-attachment: fixed;
 }
