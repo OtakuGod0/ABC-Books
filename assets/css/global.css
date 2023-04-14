@@ -85,7 +85,7 @@ header a:hover[id="login"] {
 
 .login-button:hover {
     background-color: black;
-    border:1px solid white;
+    outline:1px solid white;
 }
 
 /* ---------------------------- Footer ------------------------------------------ */
@@ -149,10 +149,7 @@ footer h1{
 
 /* --------------------------- Background ----------------------------------- */
 .background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
+    width:100%;
     height: 100vh;
     background-position: center;
     background-repeat: no-repeat;
