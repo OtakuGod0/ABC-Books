@@ -11,7 +11,7 @@ main {
     display:flex;
     flex-direction: column;
 }
-/* --------------------------------- nav bar CSS -------------------------------------- */
+/* --------------------------------- nav bar -------------------------------------- */
 header {
     position: fixed;
     top: 10px;
@@ -56,6 +56,15 @@ header a:hover[id="login"]{
 .login-button:hover{
     background-color:black;
 }
+/* ---------------------------- Footer ------------------------------------------ */
+footer{
+    width:calc(100vw-16px);
+    background-color:tomato;
+    margin:0;
+    margin-top:100px;
+    height:70vh;
+}
+
 /* -------------------------- Global Content Css ------------------------------ */
 .content { 
     height:70vh;
@@ -66,8 +75,10 @@ header a:hover[id="login"]{
 .content-margin{
     margin: 20px var(--content-margin);
 }
-
-/* --------------------------- Background ----------------------------------- */
+.content-img-wrapper{
+    background-color:black;
+}
+/* --------------------------- Top Background ----------------------------------- */
 .background{
     position:absolute;
     top:0;

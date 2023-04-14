@@ -5,11 +5,16 @@
     <title>ABC Books</title>
     <link rel="stylesheet" href="assets/css/global.css">
     <style>
-        #home{
-            height:100vh;
-            margin:0px;
+        #home {
+            height: 100vh;
+            margin: 0px;
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
         }
-        .background{
+
+        .top-background {
             background-image: url("assets/img/background.jpg");
         }
     </style>
@@ -28,15 +33,29 @@
             </ul>
         </nav>
         <div class="login-wrapper">
-            <a href="#" id="login"></a><div class="login-button">Login</div></a>
+            <a href="#" id="login"></a>
+            <div class="login-button">Login</div></a>
         </div>
     </header>
-    <main><div class="background"></div>
-        <section id="home" class="content" style="background-color:  rgba(0,0,0,0.3);"></section>
-        <section id="about-us" class="content content-margin" style="background-color: lightgreen;"></section>
-        <section id="services" class="content content-margin" style="background-color: lightyellow;"></section>
-        <section id="contact" class="content content-margin" style="background-color: lightpink;"></section>           
-      </main> 
+    <main>
+        <div class="top-background background"></div>
+        <section id="home" class="content" style="background-color: rgba(0,0,0,0.3);">
+        </section>
+
+        <section id="about-us" class="content content-margin" style="background-color: lightgreen;">
+            <div class="content-img-wrapper"></div>
+            <div class="content-info-wrapper"></div>
+        </section>
+
+        <section id="services" class="content content-margin" style="background-color: lightyellow;">
+            <div class="content-info-wrapper"></div>
+            <div class="content-img-wrapper"></div>
+        </section>
+    </main>
+    <footer>
+        <section id="contact" style="background-color: lightpink;">
+        </section>
+    </footer>
 </body>
 
 </html>
