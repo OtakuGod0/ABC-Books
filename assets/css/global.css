@@ -14,6 +14,9 @@ main {
 }
 
 /* --------------------------------- nav bar -------------------------------------- */
+html{
+    scroll-behavior: smooth; /*internal anchor link smooth scrolling */
+}
 header {
     position: fixed;
     top: 10px;
@@ -46,11 +49,6 @@ header>div {
 
 header nav ul {
     list-style: none;
-}
-
-header nav a {
-    scroll-behavior: smooth;
-
 }
 
 header a:hover {
