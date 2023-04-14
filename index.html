@@ -18,10 +18,31 @@
             background-image: url("assets/img/background.jpg");
         }
 
+        .home-content-wrapper,
+        .home-content-wrapper .learn-more-button-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .learn-more-button {
+            padding: 10px 20px;
+            background-color: black;    
+            border-radius: 30px;
+            cursor: pointer;
+        }
+        
+        .learn-more-button:hover {
+            background-color: black;
+            border: 1px solid white;
+        }
+
         .content-info-wrapper {
             padding: 40px;
         }
-        .content-info-wrapper p{
+
+        .content-info-wrapper p {
             text-align: justify;
         }
 
@@ -30,7 +51,7 @@
 
 <body>
     <header class="content-margin">
-        <div class="logo-wrapper"><a href="#">
+        <div class="logo-wrapper"><a href="index.html">
                 <div class="logo" id="header-logo"></div>
             </a>
         </div>
@@ -49,7 +70,15 @@
     </header>
     <main>
         <div class="top-background background"></div>
-        <section id="home" class="content" style="background-color: rgba(0,0,0,0.3);">
+        <section id="home" class="content">
+            <div class="home-content-wrapper" style="text-align:center;">
+                <div class="company-name" style="font-size:50px; margin:5px;">ABC BOOKS</div>
+                <div class="company-quote" style="font-size:20px;">Your satisfaction is our happiness</div>
+                <div class="learn-more-button-wrapper"><a href="#contact" style="text-decoration:none;color:white;">
+                        <div class="learn-more-button">Learn more </div>
+                    </a>
+                </div>
+            </div>
         </section>
 
         <section id="about-us" class="content content-margin" style="background-color: lightgreen;">
