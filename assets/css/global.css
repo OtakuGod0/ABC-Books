@@ -1,5 +1,6 @@
 :root {
     --content-margin: 180px;
+    --logo: url("../img/logo.jpg");
 }
 
 /* ------------------------------- Margin & size ------------------------------- */
@@ -11,6 +12,14 @@ main {
     width: calc(100vw-16px);
     display: flex;
     flex-direction: column;
+}
+.logo{
+    height:100%;
+    border-radius:50%;
+    aspect-ratio: 1/1;
+    background-image:var(--logo);
+    background-repeat: no-repeat;
+    background-size:cover;
 }
 
 /* --------------------------------- nav bar -------------------------------------- */
@@ -58,7 +67,10 @@ header a:hover {
 header a:hover[id="login"] {
     text-decoration: none;
 }
-
+#header-logo{
+    width:40px;
+    height:auto;
+}
 .login-button {
     padding: 10px 30px;
     background-color: #8bc34a;
@@ -83,7 +95,6 @@ header a:hover[id="login"] {
     margin-top: 100px;
     transform: translateY(50%);
     /*for negative margin*/
-    background-color: black;
     z-index: 0;
     display: flex;
     justify-content: center;
@@ -113,7 +124,7 @@ footer {
     background-color: black;
 }
 
-/* --------------------------- Top Background ----------------------------------- */
+/* --------------------------- home Background ----------------------------------- */
 .background {
     position: absolute;
     top: 0;
