@@ -92,7 +92,6 @@ header a:hover[id="login"] {
 .footer-logo-wrapper {
     width: 100%;
     height: 150px;
-    margin-top: 100px;
     transform: translateY(50%);
     /*for negative margin*/
     z-index: 0;
@@ -102,12 +101,30 @@ header a:hover[id="login"] {
 }
 
 footer {
+    box-sizing: border-box;
     width: 100%;
-    height: 70vh;
+    height: 80vh;
+    padding:30px;
+    padding-top:100px;
     background-color: tomato;
     z-index: 1;
 }
+.footer-content-wrapper{
+    border-top:1px solid white;     
+    box-sizing: border-box;
+    height:100%;
+    background-color:black;
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr;
 
+}
+.footer-content{
+    background-color:white;
+    border:1px solid cyan;
+}
+footer h1{
+    text-align: center;
+}
 /* -------------------------- Global Content Css ------------------------------ */
 .content {
     height: 70vh;
