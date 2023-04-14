@@ -1,8 +1,12 @@
+@import url(https://fonts.google.com/specimen/Montserrat?query=montserrat#styles);
 :root {
     --content-margin: 180px;
     --logo: url("../img/logo.jpg");
 }
+html{
+    font-family: Montserrat;
 
+}
 /* ------------------------------- Margin & size ------------------------------- */
 body {
     margin: 0;
