@@ -43,7 +43,7 @@ header,
 nav ul {
     display: flex;
     justify-content: space-between;
-    gap: clamp(10px, 40px, 50px);
+    gap: 20px;
 }
 
 header a,
@@ -250,6 +250,16 @@ footer .social-media-link-wrapper {
 /* ---------------------------- Responsibe css ------------------------ */
 @media only screen and (max-width: 768px){
     .content-margin {
-      margin: 20px;
+      margin: 10px;
     }
-  }
+    header{
+        gap:0px;
+    }
+    .footer-content{
+        padding: 0px 20px;
+        font-size:15px;
+    }
+    .footer-content h1{
+        font-size: 20px;
+    }
+}
