@@ -1,7 +1,6 @@
 @import url(https://fonts.google.com/specimen/Montserrat?query=montserrat#styles);
 
 :root {
-    --content-margin: 180px;
     --logo: url("../img/logo.jpg");
 }
 
@@ -22,14 +21,6 @@ main {
     flex-direction: column;
 }
 
-.logo {
-    height: 100%;
-    border-radius: 50%;
-    aspect-ratio: 1/1;
-    background-image: var(--logo);
-    background-repeat: no-repeat;
-    background-size: cover;
-}
 
 /* --------------------------------- nav bar -------------------------------------- */
 html {
@@ -121,7 +112,7 @@ footer {
     padding-top: 70px;
     background-color: #23272a;
     z-index: 1;
-    color:white;
+    color: white;
 }
 
 .footer-content-wrapper {
@@ -156,7 +147,7 @@ footer form input[type="email"] {
     margin: 0 30px;
     border: none;
     border-bottom: 1px solid white;
-    color:white;
+    color: white;
 }
 
 footer form input[type="email"]:focus {
@@ -165,7 +156,7 @@ footer form input[type="email"]:focus {
 
 footer form input[type="submit"] {
     border: none;
-    border-radius:5px;
+    border-radius: 5px;
     padding: 20px 80px;
     background-color: black;
     color: rgba(255, 255, 255, 0.8);
@@ -186,10 +177,10 @@ footer p {
     margin: 12px 0;
 }
 
-.footer-content-wrapper > :nth-child(2) {
+.footer-content-wrapper> :nth-child(2) {
     display: grid;
     grid-template-rows: 4fr 1fr;
-    row-gap:20px;
+    row-gap: 20px;
 }
 
 footer .social-media-link-wrapper {
@@ -198,32 +189,46 @@ footer .social-media-link-wrapper {
     justify-content: center;
     gap: 20px;
 }
-.social-media-link{
-    height:50px;
+
+.logo {
+    height: 100%;
+    border-radius: 50%;
     aspect-ratio: 1/1;
-    border-radius:50%;
+    background-image: var(--logo);
     background-repeat: no-repeat;
     background-size: cover;
 }
-#facebook{
+
+.social-media-link {
+    height: 50px;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#facebook {
     background-image: url("../img/social-media/facebook.png");
 }
-#instagram{
+
+#instagram {
     background-image: url("../img/social-media/instagram.png");
 }
-#twitter{
+
+#twitter {
     background-image: url("../img/social-media/twitter.png");
 }
+
 /* -------------------------- Global Content Css ------------------------------ */
 .content {
-    height: 70vh;
+    min-height: 70vh;
     display: grid;
     grid-template-columns: 1fr 1fr;
     z-index: 1;
 }
 
 .content-margin {
-    margin: 20px var(--content-margin);
+    margin:20px 180px;
 }
 
 .content-img-wrapper {
@@ -241,3 +246,10 @@ footer .social-media-link-wrapper {
     z-index: 0;
     margin: 0px;
 }
+
+/* ---------------------------- Responsibe css ------------------------ */
+@media only screen and (max-width: 768px){
+    .content-margin {
+      margin: 20px;
+    }
+  }
