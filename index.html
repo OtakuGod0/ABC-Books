@@ -13,6 +13,7 @@
             align-items: center;
             flex-direction: column;
         }
+
         .background {
             background-image: url("assets/img/background.jpg");
         }
@@ -25,13 +26,14 @@
             flex-direction: column;
             gap: 10px;
         }
+
         .learn-more-button {
             padding: 15px 30px;
-            background-color: black;    
+            background-color: black;
             border-radius: 30px;
             cursor: pointer;
         }
-        
+
         .learn-more-button:hover {
             background-color: black;
             outline: 1px solid white;
@@ -44,7 +46,6 @@
         .content-info-wrapper p {
             text-align: justify;
         }
-
     </style>
 </head>
 
@@ -113,18 +114,37 @@
         </div>
         <footer>
             <div class="footer-content-wrapper">
-                <section class="footer-content" id="contact">
+                <section class="footer-content" id="opening-time">
                     <h1>OPENING TIME</h1>
-                    <article></article>
+                    <article>
+                        <p><span>Sun - Thu</span><span>5:00am - 7:00pm</span></p>
+                        <p><span>Friday</span><span>8:00am - 6:00pm</span></p>
+                        <p><span>Saturday</span><span>Closed</span></p>
+                    </article>
                 </section>
                 <section class="footer-content">
-                    <div class="subscribe-form-wrapper">
+                    <div class="subscription-form-wrapper">
                         <h1>SUBSCRIBE NOW TO GET OUR SPECIAL OFFERS</h1>
+                        <form>
+                            <input type="email" placeholder="Email">
+                            <input type="submit" value="Submit">
+                        </form>
                     </div>
-                    <div class="social-media-link-wrapper"></div>
+                    <div class="social-media-link-wrapper">
+                        <a href="https://www.facebook.com" id="facebook" class="social-media-link" target="_blank"></a>
+                        <a href="https://www.instagram.com" id="instagram" class="social-media-link"
+                            target="_blank"></a>
+                        <a href="https://www.twitter.com" id="twitter" class="social-media-link" target="_blank"></a>
+                    </div>
                 </section>
-                <section class="footer-content">
+                <section class="footer-content" id="contact">
                     <h1>CONTACT</h1>
+                    <article style="text-align:center;">
+                        <p>(977+)9232132123123
+                            <br>abclainchour0@gmail.com
+                        </p>
+                        <p>Lainchour, Kathmandu</p>
+                    </article>
                 </section>
             </div>
         </footer>
