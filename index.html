@@ -39,11 +39,17 @@
             outline: 1px solid white;
         }
 
-        .content-info-wrapper {
+        .content-wrapper {
             padding: 40px;
         }
-
-        .content-info-wrapper p {
+        .content-wrapper a{
+            text-decoration:none;
+            color:black;
+        }
+        .content-wrapper a:hover{
+            text-decoration:underline;
+        }
+        .content-wrapper p {
             text-align: justify;
         }
     </style>
@@ -64,8 +70,9 @@
             </ul>
         </nav>
         <div class="login-wrapper">
-            <a href="#" id="login"></a>
-            <div class="login-button">Login</div></a>
+            <a href="#" id="login">
+                <div class="login-button">Login</div>
+            </a>
         </div>
     </header>
     <main>
@@ -80,22 +87,21 @@
             </div>
         </section>
 
-        <section id="about-us" class="content content-margin" style="background-color: lightgreen;">
+        <section id="about-us" class="content content-margin">
             <div class="content-img-wrapper"></div>
-            <div class="content-info-wrapper">
+            <div class="content-wrapper">
                 <article>
                     <h1>ABOUT US</h1>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores ab delectus quos sunt
-                        incidunt natus eius cupiditate nesciunt, similique doloremque fugit amet voluptate expedita
-                        vitae iste rerum non maiores id nulla esse molestias. Autem fugiat voluptatum omnis eaque
-                        explicabo obcaecati accusamus libero architecto nemo dolorum tenetur laudantium minima, commodi
-                        placeat mollitia perspiciatis reiciendis praesentium. </p>
+                    <p>Welcome to ABC Books - your one-stop-shop for all things literary and printing-related! We offer
+                        a wide variety of books, with a special focus on educational materials for grades 11 and 12. Our
+                        dedicated team is committed to providing excellent customer service and high-quality printing
+                        services for all your personal and professional needs. Thank you for choosing ABC Books!</p>
                 </article>
             </div>
         </section>
 
-        <section id="services" class="content content-margin" style="background-color: lightyellow;">
-            <div class="content-info-wrapper">
+        <section id="services" class="content content-margin">
+            <div class="content-wrapper">
                 <article>
                     <h1 style="text-align:right;">OUR SERVICES</h1>
                     <ul>
