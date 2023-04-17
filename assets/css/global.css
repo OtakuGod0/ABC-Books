@@ -1,16 +1,17 @@
-@import url(https://fonts.google.com/specimen/Montserrat?query=montserrat#styles);
+@import url(fonts.css);
 
 :root {
     --logo: url("../img/logo.jpg");
 }
 
 html {
-    font-family: Montserrat;
+    font-family: "Montserrat";
     font-size: 20px;
 }
 
 /* ------------------------------- Margin & size ------------------------------- */
 body {
+    line-height: 2;
     margin: 0;
     width: calc(100vw-16px);
 }
