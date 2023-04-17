@@ -21,7 +21,6 @@ main {
     flex-direction: column;
 }
 
-
 /* --------------------------------- nav bar -------------------------------------- */
 html {
     scroll-behavior: smooth;
@@ -43,7 +42,7 @@ header,
 nav ul {
     display: flex;
     justify-content: space-between;
-    gap: 20px;
+    gap: 40px;
 }
 
 header a,
@@ -73,18 +72,6 @@ header a:hover[id="login"] {
 #header-logo {
     width: 40px;
     height: auto;
-}
-
-.login-button {
-    padding: 10px 30px;
-    background-color: black;
-    border-radius: 30px;
-    cursor: pointer;
-}
-
-.login-button:hover {
-    background-color: black;
-    outline: 1px solid white;
 }
 
 /* ---------------------------- Footer ------------------------------------------ */
@@ -247,6 +234,20 @@ footer .social-media-link-wrapper {
     margin: 0px;
 }
 
+
+/* --------------------------- Others --------------------- */
+.rounded-button {
+    padding: 10px 30px;
+    background-color: black;
+    border-radius: 30px;
+    cursor: pointer;
+    color:white;
+    text-decoration:none;
+}
+.rounded-button:hover{
+    outline: 1px solid white;
+}
+
 /* ---------------------------- Responsibe css ------------------------ */
 @media only screen and (max-width: 768px){
     .content-margin {
@@ -263,3 +264,4 @@ footer .social-media-link-wrapper {
         font-size: 20px;
     }
 }
+
