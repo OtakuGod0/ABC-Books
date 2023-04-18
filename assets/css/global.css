@@ -2,11 +2,12 @@
 
 :root {
     --logo: url("../img/logo.jpg");
+    --default-font-size: 16px;
 }
 
 html {
     font-family: "Montserrat";
-    font-size: 20px;
+    font-size: var(--default-font-size);
 }
 
 /* ------------------------------- Margin & size ------------------------------- */
@@ -252,10 +253,10 @@ footer .social-media-link-wrapper {
 /* ---------------------------- Responsibe css ------------------------ */
 @media only screen and (max-width: 768px){
     .content-margin {
-      margin: 10px;
+      margin: 20px 0px;
     }
-    header{
-        gap:0px;
+    header, nav ul{
+        gap:10px;
     }
     .footer-content{
         padding: 0px 20px;

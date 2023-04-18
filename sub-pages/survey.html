@@ -11,104 +11,110 @@
     @import url(https://fonts.google.com/specimen/Montserrat?query=montserrat#styles);
 
     :root {
-        font-family: Montserrat;
-        background-image: url('../assets/img/background.jpg');
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        background-position: center;
-        background-size: cover;
-        color:white;
+      background: url('../assets/img/background.jpg') no-repeat fixed center/cover;
+      color: white;
     }
-    
+
     body {
-        display: grid;
-        place-items: center;
-        height: 100vh;
+      display: grid;
+      place-items: center;
+      height: 100vh;
     }
-    
+
     main {
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      width:auto;
+      margin-top: 100px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: auto;
       background-color: rgba(0, 0, 0, 0.8);
       border-radius: 25px;
       padding: 20px;
     }
-    
+
     h1 {
-        font-size: 45px;
-        color: white;
-        text-align: center;
-        margin: auto auto 15px auto !important;
+      font-size: 35px;
+      color: white;
+      text-align: center;
+      margin: auto auto 0px auto;
     }
-    
+
     form {
-        margin-top:30px;
-        display: flex;
-        flex-direction: column;
-        text-align: center;
+      margin-top: 30px;
+      display: flex;
+      flex-direction: column;
+      text-align: center;
     }
-    
+
     #name_wrapper {
-        display: grid;
-        grid-template-areas: 'firstname lastname';
-        grid-gap: 10px;
-        width:100%;
+      display: grid;
+      grid-template-areas: 'firstname lastname';
+      grid-gap: 10px;
+      width: 100%;
     }
-    #name_wrapper > *{
-        width:1fr;
+
+    #name_wrapper>* {
+      width: 1fr;
     }
-    
+
     input {
-        border-radius: 10px;
-        padding: 10px;
-        font-size: 18px;
-        margin-bottom: 15px;
-        border: 1px solid#ccc;
+      border-radius: 10px;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid#ccc;
     }
-    
+
     #submit {
-        display: block;
-        margin: 0 auto;
-        border-radius: 30px;
-        height: 52px;
-        width: 160px;
-        text-align: center;
-        font-size: 23px;
+      display: block;
+      margin: 0 auto;
+      border-radius: 30px;
+      height: 52px;
+      width: 160px;
+      text-align: center;
+      font-size: 23px;
     }
-    
+
     #submit:hover {
-        background-color: black;
-        color: white;
+      background-color: black;
+      color: white;
     }
-    label{
-        font-size:23px;
+
+    #gender_wrapper,
+    #birth_date_wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+      margin-bottom: 20px;
     }
-    #gender_wrapper, #birth_date_wrapper{
-        display:flex;
-        align-items:center;
-        justify-content:space-evenly;
-        margin-bottom:20px;
+
+    input[type='radio'] {
+      height: 20px;
+      width: 20px;
+      margin: 0;
     }
     
-    input[type='radio']{
-        height:20px;
-        width:20px;
-        margin:0;
+    input[type='date'] {
+      width: 100%;
+      margin: 0px;
     }
-    input[type='date']{width:100%;margin:0px;}
-    label[for='date']{width:250px;}
-    input::placeholder {font-family: Montserrat;}
-    
+
+    label[for='date'] {
+      width: 250px;
+    }
+
+    input::placeholder {
+      font-family: Montserrat;
+    }
+
     @media only screen and (max-width: 767px) {
-        main{
-            width:100%;
-        }
-        main > *{
-            margin:10px 5%;
-        }
-    
+      main {
+        width: 100%;
+      }
+
+      main>* {
+        margin: 10px 5%;
+      }
+
     }
   </style>
 </head>
@@ -116,49 +122,49 @@
 <body>
   <header class="content-margin">
     <div class="logo-wrapper"><a href="index.html">
-            <div class="logo" id="header-logo"></div>
-        </a>
+        <div class="logo" id="header-logo"></div>
+      </a>
     </div>
     <nav>
-        <ul>
-          <li><a href="../index.html#home">Home</a></li>
-          <li><a href="../index.html#about-us">About Us</a></li>
-          <li><a href="../index.html#services">Services</a></li>
-          <li><a href="../index.html#contact">Contact</a></li>
-        </ul>
+      <ul>
+        <li><a href="../index.html#home">Home</a></li>
+        <li><a href="../index.html#about-us">About Us</a></li>
+        <li><a href="../index.html#services">Services</a></li>
+        <li><a href="../index.html#contact">Contact</a></li>
+      </ul>
     </nav>
     <div class="login-wrapper">
-        <a href="#" id="login" class="rounded-button">
-            Login </a>
+      <a href="#" id="login" class="rounded-button">
+        Login </a>
     </div>
-</header>
+  </header>
   <main>
     <div class="form-wrapper">
-    <div>
-      <h1>Login</h1>
-    </div>
-    <hr>
-    <form action="../newfile.html">
-      <div id="name_wrapper">
-        <input type="text" placeholder="First name" id="firstname" required>
-        <input type="text" placeholder="Last name" id="lastname" required>
+      <div>
+        <h1>Login</h1>
       </div>
-      <input type="text" id="contact" placeholder="Email or phone number" required>
-      <input type="text" placeholder="Username" id="username" required>
-      <input type="password" placeholder="Create password" id="password" required>
-      <input type="password" placeholder="Confirm password" id="password2" required>
-      <div id="gender_wrapper">
-        <label>Gender:</label>
-        <input type="radio" name="gender" value="male" id="male" required><label for="male">Male</label>
-        <input type="radio" name="gender" value="female" id="female"><label for="female">Female</label>
-        <input type="radio" name="gender" value="others" id="others"><label for="others">Others</label>
-      </div>
-      <div id="birth_date_wrapper">
-        <label for="date">Birth Date: </label>
-      <input type="date" id="Date">
-    </div>
-    <input type="submit" id="submit" value="Submit">
-    </form>
+      <hr>
+      <form action="../newfile.html">
+        <div id="name_wrapper">
+          <input type="text" placeholder="First name" id="firstname" required>
+          <input type="text" placeholder="Last name" id="lastname" required>
+        </div>
+        <input type="text" id="contact" placeholder="Email or phone number" required>
+        <input type="text" placeholder="Username" id="username" required>
+        <input type="password" placeholder="Create password" id="password" required>
+        <input type="password" placeholder="Confirm password" id="password2" required>
+        <div id="gender_wrapper">
+          <label>Gender:</label>
+          <input type="radio" name="gender" value="male" id="male" required><label for="male">Male</label>
+          <input type="radio" name="gender" value="female" id="female"><label for="female">Female</label>
+          <input type="radio" name="gender" value="others" id="others"><label for="others">Others</label>
+        </div>
+        <div id="birth_date_wrapper">
+          <label for="date">Birth Date: </label>
+          <input type="date" id="Date">
+        </div>
+        <input type="submit" id="submit" value="Submit">
+      </form>
     </div>
   </main>
 </body>
