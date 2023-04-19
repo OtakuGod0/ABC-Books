@@ -1,12 +1,14 @@
 @import url(fonts.css);
 
+:root * {
+    font-family: "Montserrat";
+}
 :root {
     --logo: url("../img/logo.jpg");
     --default-font-size: 16px;
 }
 
 html {
-    font-family: "Montserrat";
     font-size: var(--default-font-size);
 }
 
@@ -41,7 +43,7 @@ header {
 }
 
 header,
-nav ul {
+header nav ul {
     display: flex;
     justify-content: space-between;
     gap: 40px;
@@ -266,4 +268,3 @@ footer .social-media-link-wrapper {
         font-size: 20px;
     }
 }
-

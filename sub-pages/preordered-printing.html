@@ -5,11 +5,9 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ABC-Books survey</title>
+  <title>ABC-Books printing</title>
   <link rel="stylesheet" href="../assets/css/global.css">
   <style>
-    @import url(https://fonts.google.com/specimen/Montserrat?query=montserrat#styles);
-
     :root {
       background: url('../assets/img/background.jpg') no-repeat fixed center/cover;
       color: white;
@@ -45,6 +43,7 @@
       flex-direction: column;
       text-align: center;
     }
+    input[type="file"]{margin:0px;}
 
     #name_wrapper {
       display: grid;
@@ -81,7 +80,7 @@
       text-align: center;
       font-size: 23px;
     }
-
+    
     #submit:hover {
       background-color: black;
       color: white;
@@ -118,7 +117,19 @@
     input::placeholder {
       font-family: Montserrat;
     }
-
+    input[type="file"]::-webkit-file-upload-button {
+        background:transparent;
+        font-family: "Montserrat";
+        padding: 10px 20px;
+        border:1px solid white;
+        border-radius: 15px;
+        color:white;
+        margin-right: 30px;
+    }
+    input[type="file"]::-webkit-file-upload-button:hover{
+        background-color: black;
+        
+    }
     @media only screen and (max-width: 767px) {
       main {
         width: 100%;
@@ -153,7 +164,7 @@
   <main>
     <div class="form-wrapper">
       <div>
-        <h1>Survey</h1>
+        <h1>Printing Order</h1>
       </div>
       <hr>
       <form action="../newfile.html">
@@ -162,18 +173,8 @@
           <input type="text" placeholder="Last name" id="lastname" required>
         </div>
         <input type="text" id="contact" placeholder="Email or phone number" required>
-        <div id="gender_wrapper">
-          <label>Gender:</label>
-          <input type="radio" name="gender" value="male" id="male" required><label for="male">Male</label>
-          <input type="radio" name="gender" value="female" id="female"><label for="female">Female</label>
-          <input type="radio" name="gender" value="others" id="others"><label for="others">Others</label>
-        </div>
-        <div id="birth_date_wrapper">
-          <label for="date">Birth Date: </label>
-          <input type="date" id="Date">
-        </div>
         <div class="wrapper"><label for="locations">Your location:</label>
-          <select id="locations" name="locations">
+          <select id="locations" name="locations" required>
             <option value="">Your location</option>
             <option value="Thamel">Thamel</option>
             <option value="Boudha">Boudha</option>
@@ -188,16 +189,10 @@
           </select>
         </div>
         <div class="wrapper">
-          <label for="looking-for">Looking for: </label>
-          <input type="checkbox" id="printing" name="looking-for" value="printing">
-          <label for="printing">Printing</label>
-          <input type="checkbox" id="stationeries" name="looking-for[]" value="stationeries">
-          <label for="stationeries">Stationeries</label>
-          <input type="checkbox" id="books" name="looking-for[]" value="books">
-          <label for="books">Books</label>
-        </div>
-        
-        <textarea rows="10" placeholder="Any suggestion for us?" id="feedback"></textarea>
+            <label for="printing-file">Upload file:</label>
+            <input type="file" id="printing-file" name="printing-file">
+        </div>          
+        <textarea rows="5" placeholder="Your message" id="message"></textarea>
         <button type="submit" id="submit"> Submit </button>
       </form>
     </div>
