@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <main>
+        <header>
+            <h1>Sign up</h1>
+        </header>
+        <hr>
+        <form action="../newfile.html">
+            <div id="name_wrapper">
+                <input type="text" placeholder="First name" id="firstname" required>
+                <input type="text" placeholder="Last name" id="lastname" required>
+              </div>
+              <input type="text" id="contact" placeholder="Email or phone number" required>
+              <input type="text" placeholder="Username" id="username" required>
+              <input type="password" placeholder="Create password" id="password" required>
+              <input type="password" placeholder="Confirm password" id="password2" required>
+              <div id="gender_wrapper">
+                <label>Gender:</label>
+                <input type="radio" name="gender" value="male" id="male" required><label for="male">Male</label>
+                <input type="radio" name="gender" value="female" id="female"><label for="female">Female</label>
+                <input type="radio" name="gender" value="others" id="others"><label for="others">Others</label>
+              </div>
+              <div id="birth_date_wrapper">
+                <label for="date">Birth Date: </label>
+              <input type="date" id="Date">
+            </div>
+            <input type="submit" id="submit" value="Submit">
+        </form>
+    </main>
+</body>
+
+</html>
