@@ -8,7 +8,6 @@
   <title>Login</title>
   <link rel="stylesheet" href="../assets/css/global.css">
   <style>
-    @import url(https://fonts.google.com/specimen/Montserrat?query=montserrat#styles);
 
     :root {
       font-family: Montserrat;
@@ -39,14 +38,13 @@
       font-size: 45px;
       color: white;
       text-align: center;
-      margin: auto auto 15px auto !important;
+      margin: auto auto 0px auto !important;
     }
 
     form {
       width:20vw;
       margin-top: 30px;
       display: flex;
-      gap:10px;
       flex-direction: column;
       text-align: center;
     }
@@ -61,6 +59,7 @@
     #submit {
       display: block;
       margin: 0 auto;
+      margin-bottom:10px;
       border-radius: 30px;
       height: 52px;
       width: 160px;
@@ -124,7 +123,7 @@
       <input type="password" placeholder="Enter your password" id="password" required>
       <input type="submit" id="submit" value="Log in">
     </form>
-    <div>Don't have an account?<br> <a href="signup.html">Sign up</a></div>
+    <div>Don't have an account? <a href="signup.html">Sign up</a></div>
     </div>
   </main>
 </body>

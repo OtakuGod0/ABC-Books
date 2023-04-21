@@ -16,58 +16,59 @@
             align-items: center;
             flex-direction: column;
         }
+        .background{
+            background-image:url(../assets/img/background.jpg)
+        }
 
-        .product-wrapper {
-            min-height: 50vh;
+        .home-content-wrapper,
+        .home-content-wrapper .learn-more-button-wrapper {
             display: flex;
-            flex-direction: column;
-            text-align: center;
-        }
-        .product-img-wrapper{
-            height:100%;
-            width:100%;
-            display:flex;
+            justify-content: center;
+            align-items: center;
             flex-direction: column;
         }
-        .product-wrapper > div {
-            flex-grow: 1;
+
+        .product-wrapper > div { 
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
-            padding: 30px;
-            column-gap: 10px;
+            gap: 10px;
+            padding: 10px; 
         }
-        .product-wrapper .product-img-wrapper #product-name{
+        .product-wrapper > div > div { 
+            background: url("../assets/img/searchd image/cinthia-becher-OIBJaiLnMsU-unsplash.jpg") no-repeat center / cover ; 
             display:flex;
-            flex-direction: column;
-            flex-grow: 1;
-            background-color:rgba(0,0,0,0.4);
-            justify-content: center;
-            align-items: center;
+            flex-direction:column; 
+            border-radius: 12px;
+            overflow:hidden;
         }
-        .product-wrapper .product-img-wrapper .product-img-footer {
-            color: white;
-            height: 50px;
+        .product-wrapper > div > div > div{
             display: flex;
-            justify-content: center;
+            gap:10px;
+            padding: 10px 20px;
+        }
+        .product-wrapper .product-footer {
             align-items: center;
-            background-color:black;
-            padding: 5px 30px;
-
+            background-color: rgba(1,1,1,0.8);
+            color:white;
         }
-        
-        .product-wrapper .product-img-wrapper .product-img-footer:hover {
-            cursor: pointer;
+        .product-wrapper #product-name {
+            height:35vh;
+            justify-content: center;
+            font-size: 25px;
+            font-weight:bold;
+            align-items:center;
         }
-
-        .product-wrapper .product-img-wrapper .shop-icon-wrapper{
-            background: url("../assets/img/shop-icon.png") no-repeat center / cover;
-            height:calc(100% - 20px);
+        .product-wrapper #shop-icon { 
+            height: 80%;
+            box-sizing:border-box;
             aspect-ratio: 1/1;
+            background: url(../assets/img/shop-icon.png) no-repeat center / cover;
         }
-        .product-wrapper .product-img-wrapper .prize-wrapper {
-            flex-grow: 1;
-            text-align: center;
+        .product-wrapper #product-prize{
+            text-align:center;
+            flex-grow:1;
         }
+     
     </style>
 </head>
 
@@ -93,7 +94,7 @@
     <main>
         <section id="home" class="background">
             <div class="home-content-wrapper" style="text-align:center;">
-                <h1 class="company-name" style="font-size:50px; margin:5px;">ABC BOOKS</h1>
+                <h1 class="company-name" style="font-size:50px; margin:5px; height:75px;">ABC BOOKS</h1>
                 <h6 class="company-quote" style="font-size:20px; margin:1px;">Your satisfaction is our priority</h6>
                 <div class="learn-more-button-wrapper"><a href="#contact" class="rounded-button">
                         Learn more
@@ -101,19 +102,64 @@
                 </div>
             </div>
         </section>
-
-        <section class="content-margin product-wrapper" style="background-color:cyan;">
+        <!-- products-html  -->
+        <!-- New collections  -->
+        <section class="product-wrapper content-margin">
             <h1>New collection</h1>
+            <hr>
             <div>
-                <div class="product-img-wrapper">
+                <div>
                     <div id="product-name">Stick File</div>
-                    <div class="product-img-footer">
-                        <div class="shop-icon-wrapper"></div>
-                        <div class="prize-wrapper">Rs 60</div>
+                    <div class="product-footer">
+                        <div id="shop-icon"></div>
+                        <div id="product-prize">Rs 20</div>
+                    </div>
+                </div>
+                <div>
+                    <div id="product-name">Stick File</div>
+                    <div class="product-footer">
+                        <div id="shop-icon"></div>
+                        <div id="product-prize">Rs 20</div>
+                    </div>
+                </div>
+                <div>
+                    <div id="product-name">Stick File</div>
+                    <div class="product-footer">
+                        <div id="shop-icon"></div>
+                        <div id="product-prize">Rs 20</div>
                     </div>
                 </div>
             </div>
         </section>
+
+        <section class="product-wrapper content-margin">
+            <h1>New collection</h1>
+            <hr>
+            <div>
+                <div>
+                    <div id="product-name">Stick File</div>
+                    <div class="product-footer">
+                        <div id="shop-icon"></div>
+                        <div id="product-prize">Rs 20</div>
+                    </div>
+                </div>
+                <div>
+                    <div id="product-name">Stick File</div>
+                    <div class="product-footer">
+                        <div id="shop-icon"></div>
+                        <div id="product-prize">Rs 20</div>
+                    </div>
+                </div>
+                <div>
+                    <div id="product-name">Stick File</div>
+                    <div class="product-footer">
+                        <div id="shop-icon"></div>
+                        <div id="product-prize">Rs 20</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+       
 
     </main>
     <div class="foooter-wrapper">
