@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buy Books</title>
+    <link rel="stylesheet" href="../assets/css/global.css">
+    <script>
+        let books = {
+            physics: "",
+            chemistry: "",
+            math: "", 
+            computer: "", 
+            biology: "", 
+            English: "", 
+            Nepali: "",
+        }
+    </script>
+    <style>
+        main{
+            display:flex;
+            flex-direction:row;
+            margin:0px;
+            height:100vh;
+        }
+        #side-img-wrapper{
+            height:100%;
+            width:60%;
+            background: url("../assets/img/books-background.jpg") no-repeat center / cover;
+        }
+        #form-wrapper{
+            flex-grow:1;
+        }
+    </style>
+</head>
+<body>
+    <header class="content-margin">
+        <div class="logo-wrapper"><a href="index.html">
+                <div class="logo" id="header-logo"></div>
+            </a>
+        </div>
+        <nav>
+            <ul>
+              <li><a href="../index.html#home">Home</a></li>
+              <li><a href="../index.html#about-us">About Us</a></li>
+              <li><a href="../index.html#services">Services</a></li>
+              <li><a href="../index.html#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="login-wrapper">
+            <a href="#" id="login" class="rounded-button">
+                Login </a>
+        </div>
+    </header>
+    <main>
+        <section id="side-img-wrapper"></section>
+        <section id="form-wrapper"></section>
+    </main>
+</body>
+</html>
