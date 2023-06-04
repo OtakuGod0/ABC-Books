@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,26 +12,26 @@
         let books = {
             physics: "",
             chemistry: "",
-            math: "", 
-            computer: "", 
-            biology: "", 
-            English: "", 
+            math: "",
+            computer: "",
+            biology: "",
+            English: "",
             Nepali: "",
         };
 
         let cart = [];
-        function add(subject, publication){
+        function add(subject, publication) {
             non_discountable = ["english", "nepali"];
-            if(non_discountable.includes(subject)){
+            if (non_discountable.includes(subject)) {
                 cart.push(book[subject][publication]);
             }
-            else{
-                cart.push(book[subject][publication] - book[subject][publication] * discount/100);
+            else {
+                cart.push(book[subject][publication] - book[subject][publication] * discount / 100);
             }
         }
-        function calculate(){
+        function calc() {
             let sum = 0;
-            for(let i = 0;i < cart.length;i++){
+            for (let i = 0; i < cart.length; i++) {
                 sum += cart[i];
             }
             cart = [];
@@ -40,22 +41,25 @@
 
     </script>
     <style>
-        main{
-            display:flex;
-            flex-direction:row;
-            margin:0px;
-            height:100vh;
+        main {
+            display: flex;
+            flex-direction: row;
+            margin: 0px;
+            height: 100vh;
         }
-        #side-img-wrapper{
-            height:100%;
-            width:60%;
+
+        #side-img-wrapper {
+            height: 100%;
+            width: 60%;
             background: url("../assets/img/books-background.jpg") no-repeat center / cover;
         }
-        #form-wrapper{
-            flex-grow:1;
+
+        #form-wrapper {
+            flex-grow: 1;
         }
     </style>
 </head>
+
 <body>
     <header class="content-margin">
         <div class="logo-wrapper"><a href="index.html">
@@ -64,10 +68,10 @@
         </div>
         <nav>
             <ul>
-              <li><a href="../index.html#home">Home</a></li>
-              <li><a href="../index.html#about-us">About Us</a></li>
-              <li><a href="../index.html#services">Services</a></li>
-              <li><a href="../index.html#contact">Contact</a></li>
+                <li><a href="../index.html#home">Home</a></li>
+                <li><a href="../index.html#about-us">About Us</a></li>
+                <li><a href="../index.html#services">Services</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
             </ul>
         </nav>
         <div class="login-wrapper">
@@ -77,7 +81,23 @@
     </header>
     <main>
         <section id="side-img-wrapper"></section>
-        <section id="form-wrapper"></section>
+        <section id="form-wrapper">
+            <form onsubmit="calc()">
+                <div class="physics-wrapper">
+                    <label for="physics">Physics</label>
+                    <div class="publication">
+                        
+                    </div>
+                </div>
+                <div class="chemistry-wrapper"></div>
+                <div class="math-wrapper"></div>
+                <div class="biology-wrapper"></div>
+                <div class="computer-wrapper"></div>
+                <div class="english-wrapper"></div>
+                <div class="nepali-wrapper"></div>
+            </form>
+        </section>
     </main>
 </body>
+
 </html>
