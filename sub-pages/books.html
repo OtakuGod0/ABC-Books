@@ -7,6 +7,7 @@
     <title>Buy Books</title>
     <link rel="stylesheet" href="../assets/css/global.css">
     <script>
+        let discount = 20;
         let books = {
             physics: "",
             chemistry: "",
@@ -15,7 +16,28 @@
             biology: "", 
             English: "", 
             Nepali: "",
+        };
+
+        let cart = [];
+        function add(subject, publication){
+            non_discountable = ["english", "nepali"];
+            if(non_discountable.includes(subject)){
+                cart.push(book[subject][publication]);
+            }
+            else{
+                cart.push(book[subject][publication] - book[subject][publication] * discount/100);
+            }
         }
+        function calculate(){
+            let sum = 0;
+            for(let i = 0;i < cart.length;i++){
+                sum += cart[i];
+            }
+            cart = [];
+            return sum;
+        }
+
+
     </script>
     <style>
         main{
