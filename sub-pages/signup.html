@@ -118,10 +118,6 @@
             background-color: rgba(0, 0, 0, 0.8);
 
         }
-        .error { 
-            color: red ;
-            border: 3px solid red;
-        }
         @media only screen and (max-width: 767px) {
             main {
                 width: 100%;
@@ -133,7 +129,7 @@
 
         }
     </style>
-    
+    <script src="../assets/js/script.js"></script>
 </head>
 
 <body>
@@ -166,7 +162,7 @@
                     <input type="text" placeholder="First name" id="firstname" name="firstname" required>
                     <input type="text" placeholder="Last name" id="lastname" name ="lastname" required>
                 </div>
-                <input type="text" id="contact" placeholder="Email or phone number" name = "contact">
+                <input type="text" id="email" placeholder="Email" name = "email">
                 <input type="text" placeholder="Username" id="username" name="username" required>
                 <input type="password" placeholder="Create password" id="password" required>
                 <input type="password" placeholder="Confirm password" id="password2" required>
@@ -186,12 +182,11 @@
                 function validate(){
                     var password = document.getElementById("password")
                     var password2 = document.getElementById("password2")
-                    var contact = document.getElementById("contact")
-        
-                    let isValid = true;
+                    var email = document.getElementById("email")
+
                     var passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_=\[\]{}|;:'",.<>?/]).{8,}$/;
-                    var contactRegex = /^(?:(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()-_=+[\]{}|;:'",.<>?/]).{8,}$)|(^\+?[0-9]{1,4}?[-. ]?\(?[0-9]{1,}\)?[-. ]?[0-9]{1,}[-. ]?[0-9]{1,}$)/;
-        
+                    let isValid = true;
+
                     if(!passwordRegex.test(password.value) && password.value === password2.value){
                         password.classList.add("error");
                         password2.classList.add("error");
@@ -199,9 +194,9 @@
                         password2.value = ""
                         isValid = false;
                     }
-                    if(!contactRegex.test(contact)){
-                        contact.classList.add("error");
-                        contact.value = ""
+                    if(!emailRegex.test(email.value)){
+                        email.classList.add("error");
+                        email.value = ""
                         isValid = false;
                     }
         
