@@ -37,8 +37,8 @@
         echo "Error creating table". $conn->error . "<br>";
     }
     
-    if($_SERVER["REQUET_METHOD"] == "POST"){
-        $name = $_POST["firstname"] + $_POST("lastname");
+    if($_SERVER["REQUEST_METHOD"] == "POST"){
+        $name = $_POST["firstname"] . $_POST["lastname"];
         $username = $_POST["username"];
         $password = $_POST["password"];
         $email = $_POST["email"];
@@ -46,13 +46,13 @@
         $dob = $_POST["dob"];
 
         $sqlinsert = "INSERT INTO $tbname (name, username, password, email, gender, dob) VALUES ($name, $username, $password, $email, $gender, $dob) ";
-        if($conn->query($sqlinsert) === true){
+        if($conn->query($sqlinsert) == true){
             echo "Data inserted successfuly";
         }
         else {
             echo "Error inserting data". $conn->error . "<br>";
         }
-        
+
     }
     
 ?>
