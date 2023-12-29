@@ -1,23 +1,5 @@
 <?php 
-    $server = "localhost";
-    $username = "root";
-    $password = "";
-
-    $conn = new mysqli($server, $username, $password);
-    if ($conn->connect_error) {
-        die("Connection Error: ". $conn->connect_error);
-    } 
-    
-    $dbname = "abc_books";
-    $sqlcreatedb = "CREATE DATABASE IF NOT EXISTS $dbname";
-    if($conn->query($sqlcreatedb) === true){
-        echo "Database create successfully <br>";
-    }
-    else {
-        echo "Error creating database". $conn->error . "<br>";
-    }
-
-    $conn->select_db($dbname);
+    include("config.php");
 
     $tbname = "abc_users";
     $sqlcreatetb = "CREATE TABLE IF NOT EXISTS $tbname (
@@ -38,19 +20,21 @@
     }
     
     if($_SERVER["REQUEST_METHOD"] == "POST"){
-        $name = $_POST["firstname"] . $_POST["lastname"];
-        $username = $_POST["username"];
-        $password = $_POST["password"];
-        $email = $_POST["email"];
-        $gender = $_POST["gender"];
-        $dob = $_POST["dob"];
-
-        $sqlinsert = "INSERT INTO $tbname (name, username, password, email, gender, dob) VALUES ($name, $username, $password, $email, $gender, $dob) ";
-        if($conn->query($sqlinsert) == true){
-            echo "Data inserted successfuly";
-        }
-        else {
-            echo "Error inserting data". $conn->error . "<br>";
+        $name = $_POST["firstname"] . " " . $_POST["lastname"];
+        $user_name = $_POST["username"];
+        $user_password = $_POST["password"];
+        $user_email = $_POST["email"];
+        $user_gender = $_POST["gender"];
+        $user_dob = $_POST["dob"];
+    
+        // Use prepared statements to prevent SQL injection
+        $sqlinsert = $conn->prepare("INSERT INTO $tbname (name, username, password, email, gender, dob) VALUES (?, ?, ?, ?, ?, ?)");
+        $sqlinsert->bind_param("ssssss", $name, $user_name, $user_password, $user_email, $user_gender, $user_dob);
+    
+        if ($sqlinsert->execute()) {
+            echo "Data inserted successfully";
+        } else {
+            echo "Error inserting data" . $sqlinsert->error . "<br>";
         }
 
     }

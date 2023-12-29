@@ -131,8 +131,8 @@
                 <section class="footer-content">
                     <div class="subscription-form-wrapper">
                         <h1>SUBSCRIBE NOW TO GET OUR SPECIAL OFFERS</h1>
-                        <form onsubmit="return validateEmail()">
-                            <input type="email" placeholder="Email" id="email">
+                        <form action="assets/php/processEmail.php"return validateEmail()">
+                            <input type="email" placeholder="Email" id="email" name="email">
                             <input type="submit" value="Submit">
                         </form>
                         <script>
