@@ -16,8 +16,9 @@
             align-items: center;
             flex-direction: column;
         }
-        .background{
-            background-image:url(../assets/img/background.jpg)
+
+        .background {
+            background-image: url(../assets/img/background.jpg)
         }
 
         .home-content-wrapper,
@@ -28,47 +29,92 @@
             flex-direction: column;
         }
 
-        .product-wrapper > div { 
+        .product-wrapper>div {
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
             gap: 10px;
-            padding: 10px; 
+            padding: 10px;
         }
-        .product-wrapper > div > div { 
-            background: url("../assets/img/searchd image/cinthia-becher-OIBJaiLnMsU-unsplash.jpg") no-repeat center / cover ; 
-            display:flex;
-            flex-direction:column; 
-            border-radius: 12px;
-            overflow:hidden;
-        }
-        .product-wrapper > div > div > div{
+
+        .product-wrapper>div>div {
+            background: url("../assets/img/searchd image/cinthia-becher-OIBJaiLnMsU-unsplash.jpg") no-repeat center / cover;
             display: flex;
-            gap:10px;
+            flex-direction: column;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .product-wrapper>div>div>div {
+            display: flex;
+            gap: 10px;
             padding: 10px 20px;
         }
+
         .product-wrapper .product-footer {
             align-items: center;
-            background-color: rgba(1,1,1,0.8);
-            color:white;
+            background-color: rgba(1, 1, 1, 0.8);
+            color: white;
         }
+
         .product-wrapper #product-name {
-            height:35vh;
+            height: 35vh;
             justify-content: center;
             font-size: 25px;
-            font-weight:bold;
-            align-items:center;
+            font-weight: bold;
+            align-items: center;
         }
-        .product-wrapper #shop-icon { 
+
+        .product-wrapper #shop-icon {
             height: 80%;
-            box-sizing:border-box;
+            box-sizing: border-box;
             aspect-ratio: 1/1;
             background: url(../assets/img/shop-icon.png) no-repeat center / cover;
+            cursor: pointer;
         }
-        .product-wrapper #product-prize{
-            text-align:center;
-            flex-grow:1;
+
+        .product-wrapper #product-prize {
+            text-align: center;
+            flex-grow: 1;
         }
-     
+
+        /* cart css */
+        .cart{
+            position: fixed;
+            display:flex;
+            flex-direction:column;
+            place-items: center;
+            width: 24%;
+            background-color: rgba(0,0,0,0.5);
+            color:white;
+            right: 80px;
+            bottom: 30px;
+            border-radius:20px;
+            padding:10px 15px ;
+        }
+        .cart hr{
+            width:100%;
+        }
+        .cart h3{
+            margin-bottom: 0px;
+        }
+        .cart #cart-items-wrappar{
+            min-height: 60px;
+        }
+        .cart #cart-footer{
+            margin: 5px auto;
+        }
+        .cart button{
+            padding: 10px 20px;
+            border-radius: 100px;
+            border:none;
+            background-color:black;
+            color:white;
+            font-size: 1em;
+        }
+        .cart button:hover{
+            cursor:pointer;
+            outline: 1px solid white;
+        }
     </style>
 </head>
 
@@ -159,8 +205,16 @@
                 </div>
             </div>
         </section>
-       
 
+        <section class="cart">
+            <h3>CART</h3>
+            <hr>
+            <div id="cart-items-wrappar"></div>
+            <hr>
+            <div id="cart-footer">
+                <button onclick="processCart()">Order NOW</button>
+            </div>
+        </section>
     </main>
     <div class="foooter-wrapper">
         <div class="footer-logo-wrapper">

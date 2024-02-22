@@ -106,8 +106,6 @@
                         <li><a href="sub-pages/survey.html">Join our survey</a></li>
                         <li><a href="sub-pages/products.html">Products</a></li>
                         <li><a href="sub-pages/preordered-printing.html">Pre ordered printing</a></li>
-                        <li><a href="sub-pages/coffee.html">Coffee</a></li>
-                        <li><a href="sub-pages/books.html">Buy Books</a></li>
                     </ul></nav>
                 </article>
             </div>
