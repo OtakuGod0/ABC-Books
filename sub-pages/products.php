@@ -12,7 +12,7 @@
             height: 100vh;
             margin: 0px;
             display: flex;
-            justify-content: center;
+            justify-content: center;    
             align-items: center;
             flex-direction: column;
         }
@@ -134,7 +134,7 @@
             </ul>
         </nav>
         <div class="login-wrapper">
-            <a href="#" id="login" class="rounded-button">
+            <a href="login.html" id="login" class="rounded-button">
                 Login </a>
         </div>
     </header>
@@ -210,7 +210,11 @@
         <section class="cart">
             <h3>CART</h3>
             <hr>
-            <div id="cart-items-wrappar"></div>
+            <div id="cart-items-wrappar">
+                <script>
+                    function processCart(x, y)
+                </script>
+            </div>
             <hr>
             <div id="cart-footer">
                 <button onclick="processCart()">Order NOW</button>

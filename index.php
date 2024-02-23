@@ -104,7 +104,7 @@
                     <nav>
                     <ul>
                         <li><a href="sub-pages/survey.html">Join our survey</a></li>
-                        <li><a href="sub-pages/products.html">Products</a></li>
+                        <li><a href="sub-pages/products.php">Products</a></li>
                         <li><a href="sub-pages/preordered-printing.html">Pre ordered printing</a></li>
                     </ul></nav>
                 </article>
