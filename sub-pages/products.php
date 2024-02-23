@@ -158,7 +158,7 @@
                 <div>
                     <div id="product-name">Stick File</div>
                     <div class="product-footer">
-                        <div id="shop-icon"></div>
+                        <div id="shop-icon" onclick="processCart('stick file', 20)"></div>
                         <div id="product-prize">Rs 20</div>
                     </div>
                 </div>
@@ -212,7 +212,29 @@
             <hr>
             <div id="cart-items-wrappar">
                 <script>
-                    function processCart(x, y)
+                    list = {}
+                    function processCart(x, y){
+                        check = false
+                        for(let key in list){
+                            if(key == x){
+                                check = true
+                            }
+                        }         
+                        if(check){
+                            list[x]++;
+                            document.getElementById(`cart-item-quantity-${x}`).innerhtml = list[x] 
+                        }
+                        else{
+                            list[x] = 1;
+                            document.getElementById("cart-items-wrapper").innerHTML += `
+                                <div class="item"> 
+                                    <span>${x}</span> 
+                                    <span id="cart-item-quantity-${x}">${list[x]}</span> 
+                                    <span>${y}</span>
+                                </div>
+                            `;
+                        }
+                    }
                 </script>
             </div>
             <hr>
