@@ -25,59 +25,6 @@ main {
     flex-direction: column;
 }
 
-/* --------------------------------- nav bar -------------------------------------- */
-html {
-    scroll-behavior: smooth;
-    /*internal anchor link smooth scrolling */
-}
-
-header {
-    position: fixed;
-    top: 10px;
-    left: 0;
-    right: 0;
-    z-index: 999;
-    background-color: rgba(0, 0, 0, 0.4);
-    border-radius: 20px;
-    padding: 10px 40px;
-}
-
-header,
-header nav ul {
-    display: flex;
-    justify-content: space-between;
-    gap: 40px;
-}
-
-header a,
-header div {
-    text-decoration: none;
-    color: white;
-}
-
-header>div {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-header nav ul {
-    list-style: none;
-}
-
-header a:hover {
-    text-decoration: underline;
-}
-
-header a:hover[id="login"] {
-    text-decoration: none;
-}
-
-#header-logo {
-    width: 40px;
-    height: auto;
-}
-
 /* ---------------------------- Footer ------------------------------------------ */
 .footer-wrapper {
     width: calc(100vw-16px);

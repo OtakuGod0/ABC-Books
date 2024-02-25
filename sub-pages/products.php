@@ -165,7 +165,7 @@
         <!-- products-html  -->
         <!-- New collections  -->
         <section class="product-wrapper content-margin">
-            <h1>New collection</h1>
+            <h1 id="newCollection">New collection</h1>
             <hr>
             <div>
                 <div>

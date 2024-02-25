@@ -38,7 +38,7 @@
                 <li><a href="../index.php#about-us">About Us</a></li>
                 <li><a href="../index.php#services">Services</a></li>
                 <li><a href="../index.php#contact">Contact</a></li>
-                <li><a href="products.php">Products</a></li>
+                <li><a href="products.php#newCollection">Products</a></li>
             </ul>
 
         </nav>
