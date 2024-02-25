@@ -12,7 +12,7 @@
             height: 100vh;
             margin: 0px;
             display: flex;
-            justify-content: center;    
+            justify-content: center;
             align-items: center;
             flex-direction: column;
         }
@@ -78,42 +78,55 @@
         }
 
         /* cart css */
-        .cart{
+        #cart {
             position: fixed;
-            display:flex;
-            flex-direction:column;
+            display: none;
+            flex-direction: column;
             place-items: center;
             width: 24%;
-            background-color: rgba(0,0,0,0.5);
-            color:white;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
             right: 80px;
             bottom: 30px;
-            border-radius:20px;
-            padding:10px 15px ;
+            border-radius: 20px;
+            padding: 10px 15px;
         }
-        .cart hr{
-            width:100%;
+
+        #cart hr {
+            width: 100%;
         }
-        .cart h3{
+
+        #cart h3 {
             margin-bottom: 0px;
         }
-        .cart #cart-items-wrappar{
+
+        #cart #cart-items-wrappar {
             min-height: 60px;
         }
-        .cart #cart-footer{
+
+        #cart #cart-footer {
             margin: 5px auto;
         }
-        .cart button{
+
+        #cart input[type = "submit"] {
             padding: 10px 20px;
             border-radius: 100px;
-            border:none;
-            background-color:black;
-            color:white;
+            border: none;
+            background-color: black;
+            color: white;
             font-size: 1em;
         }
-        .cart button:hover{
-            cursor:pointer;
+
+        #cart input[type = "submit"]:hover {
+            cursor: pointer;
             outline: 1px solid white;
+        }
+        #cart #cart-items-wrappar{
+            width:100%;
+        }
+        #cart #cart-items-wrappar div {
+            display:flex;
+            justify-content: space-evenly;
         }
     </style>
 </head>
@@ -130,7 +143,7 @@
                 <li><a href="../index.php#about-us">About Us</a></li>
                 <li><a href="../index.php#services">Services</a></li>
                 <li><a href="../index.php#contact">Contact</a></li>
-                <li><a href="../sub-pages/orders.php">Orders</a></li>
+                <li><a href="orders.php#orders-table">Orders</a></li>
             </ul>
         </nav>
         <div class="login-wrapper">
@@ -158,7 +171,7 @@
                 <div>
                     <div id="product-name">Stick File</div>
                     <div class="product-footer">
-                        <div id="shop-icon" onclick="processCart('stick file', 20)"></div>
+                        <div id="shop-icon" onclick="processCart('stick_file', 20)"></div>
                         <div id="product-prize">Rs 20</div>
                     </div>
                 </div>
@@ -207,41 +220,44 @@
             </div>
         </section>
 
-        <section class="cart">
+        <form action = "../assets/php/ProcessOrders.php" id="cart">
             <h3>CART</h3>
             <hr>
             <div id="cart-items-wrappar">
                 <script>
-                    list = {}
+                    list = {};
+                    a = 1; 
                     function processCart(x, y){
+                        document.getElementById("cart").style.display = "flex";
                         check = false
                         for(let key in list){
                             if(key == x){
-                                check = true
+                                check = true;
                             }
-                        }         
+                        }
                         if(check){
-                            list[x]++;
-                            document.getElementById(`cart-item-quantity-${x}`).innerhtml = list[x] 
+                            document.getElementById(`cart-item-${x}-quantity`).innerHTML = ++list[x];
                         }
                         else{
-                            list[x] = 1;
-                            document.getElementById("cart-items-wrapper").innerHTML += `
-                                <div class="item"> 
-                                    <span>${x}</span> 
-                                    <span id="cart-item-quantity-${x}">${list[x]}</span> 
-                                    <span>${y}</span>
-                                </div>
+                            list[x] = 1; 
+                            document.getElementById("cart-items-wrappar").innerHTML += `
+                                <div class="cart-item-${x}"> 
+                                    <span> ${a}. </span>
+                                    <span> ${x} </span>
+                                    <span> Rs. ${y} </span>
+                                    <span id="cart-item-${x}-quantity"> 1 </span> 
                             `;
+                            a++;
+
                         }
                     }
                 </script>
             </div>
             <hr>
             <div id="cart-footer">
-                <button onclick="processCart()">Order NOW</button>
+                <input type="submit" value="ORDER NOW">
             </div>
-        </section>
+        </form>
     </main>
     <div class="foooter-wrapper">
         <div class="footer-logo-wrapper">
