@@ -67,7 +67,7 @@
                 <li><a href="#services">Services</a></li>
                 <li><a href="#contact">Contact</a></li>
                 <li><a href="sub-pages/products.php">Products</a></li>
-                <li><a href="sub-pages/orders.php">Orders</a></li>
+                <li><a href="sub-pages/orders.php#orders-table">Orders</a></li>
             </ul>
         </nav>
         <div class="login-wrapper">
