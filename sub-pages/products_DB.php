@@ -63,13 +63,21 @@
         }
 
         #products-table-wrappar {
+            margin:80px; 
             background-color: cyan;
         }
 
         #products-table-wrappar div {
             display: flex;
+            justify-content: space-between;
+            margin:10px;
         }
-
+        #products-table-wrappar table {
+            border-spacing: 70px 5px;
+        }
+        #products-table-wrappar table thead{
+            text-align: left ;
+        }
         #products-table-wrappar (table, th, tr)
     </style>
     <script src="../assets/js/script.js"></script>
@@ -129,17 +137,17 @@
                             <th>NAME</th>
                             <th>PRICE</th>
                             <th>STOCK QUANTITY</th>
-                            <th>PRODUCT_PIC</th>
                         </tr>
                     </thead>
 
+                    <tbody>
                     <?php
                     require("../assets/php/config.php");
                     require("../assets/php/processProducts.php");
                     error_reporting(E_ALL);
                     ini_set('display_errors', 1);
 
-                    $sqlselect = "SELECT ID, NAME, PRICE, STOCK_QUANTITY, PRODUCT_PIC FROM $tbname";
+                    $sqlselect = "SELECT ID, NAME, PRICE, STOCK_QUANTITY FROM $tbname";
                     $result = $conn->query($sqlselect);
 
                     if ($result->num_rows > 0) {
@@ -149,16 +157,15 @@
                             echo "<td>" . $row["NAME"] . "</td>";
                             echo "<td> Rs. " . $row["PRICE"] . "</td>";
                             echo "<td>" . $row["STOCK_QUANTITY"] . "</td>";
-                            echo "<td>" . $row["PRODUCT_PIC"] . "</td>";
                             echo "</tr>";
 
                         }
 
                     } else {
-                        echo "<tr><td colspan='5'>NO DATA FOUND</td></tr>";
+                        echo "<tr><td colspan='4'>NO DATA FOUND</td></tr>";
                     }
                     ?>
-
+                </tbody>
                 </table>
             </div>
         </section>

@@ -66,7 +66,7 @@
                 <li><a href="#about-us">About Us</a></li>
                 <li><a href="#services">Services</a></li>
                 <li><a href="#contact">Contact</a></li>
-                <li><a href="sub-pages/products.php#newCollection">Products</a></li>
+                <li><a href="sub-pages/products.php#products">Products</a></li>
                 <li><a href="sub-pages/orders.php#orders-table">Orders</a></li>
             </ul>
         </nav>
@@ -106,7 +106,7 @@
                     <nav>
                     <ul>
                         <li><a href="sub-pages/survey.html">Join our survey</a></li>
-                        <li><a href="sub-pages/products.php">Products</a></li>
+                        <li><a href="sub-pages/products.php#products">Products</a></li>
                         <li><a href="sub-pages/preordered-printing.html">Pre ordered printing</a></li>
                         <li><a href="sub-pages/orders.php">Orders</a></li>
                     </ul></nav>

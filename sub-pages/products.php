@@ -31,14 +31,34 @@
 
         .product-wrapper>div {
             display: flex;
+            overflow-x: scroll;
             gap: 10px;
             padding: 10px;
+        }
+
+        .product-flex-container::-webkit-scrollbar {
+            height:5px;
+        }
+
+        .product-flex-container::-webkit-scrollbar-thumb { 
+            background-color: #9C9C9C;
+            border-radius: 8px;
+        }
+        
+        .product-flex-container::-webkit-scrollbar-track {
+            background-color: #ddd;
+            border-radius: 8px;
+        }
+        
+        .product-flex-container::-webkit-scrollbar-thumb:hover {
+            background-color: #555;
+            cursor: pointer;
         }
 
         .product-wrapper>div>div {
             background: url("../assets/img/searchd image/cinthia-becher-OIBJaiLnMsU-unsplash.jpg") no-repeat center / cover;
             display: flex;
-            flex: 1;
+            min-width: 32.5%;
             flex-direction: column;
             border-radius: 12px;
             overflow: hidden;
@@ -166,18 +186,18 @@
             </div>
         </section>
         <!-- products-html  -->
-        <section class="product-wrapper content-margin">
+        <section class="product-wrapper content-margin" id="products">
             <?php
 
             $categories = array('Writing', 'Paper', 'Organization', 'Correction', 'Measurement', 'Others');
             foreach ($categories as $category) {
-                echo '<h1 id="' . $category . '">' . $category . '</h1>';
+                echo '<h1 id="' . $category . '" style="margin-top:50px">' . strtoupper($category) . '</h1>';
                 echo '<hr>';
-            
+
                 $sqlSelect = "SELECT NAME, PRICE, CATEGORY FROM $tbname WHERE CATEGORY = '" . $category . "'";
                 $result = $conn->query($sqlSelect);
-            
-                echo '<div>';
+
+                echo '<div class="product-flex-container">';
                 while ($row = $result->fetch_assoc()) {
                     echo '<div>
                             <div class="product-name">' . $row["NAME"] . '</div>' . '
@@ -195,7 +215,7 @@
         <form action="../assets/php/ProcessOrders.php" id="cart">
             <h3>CART</h3>
             <hr>
-            <div id="cart-items-wrappar">
+            <table id="cart-items-wrappar">
                 <script>
                     list = {};
                     a = 1;
@@ -213,18 +233,19 @@
                         else {
                             list[x] = 1;
                             document.getElementById("cart-items-wrappar").innerHTML += `
-                                <div class="cart-item-${x}"> 
-                                    <span> ${a}. </span>
-                                    <span> ${x} </span>
-                                    <span> Rs. ${y} </span>
-                                    <span id="cart-item-${x}-quantity"> 1 </span> 
+                                <tr class="cart-item-${x}"> 
+                                    <td> ${a}. </td>
+                                    <td> ${x} </td>
+                                    <td> Rs. ${y} </td>
+                                    <td id="cart-item-${x}-quantity"> 1 </td>
+                                </tr> 
                             `;
                             a++;
 
                         }
                     }
                 </script>
-            </div>
+            </table>
             <hr>
             <div id="cart-footer">
                 <input type="submit" value="ORDER NOW">
