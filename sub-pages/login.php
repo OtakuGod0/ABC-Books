@@ -94,6 +94,8 @@
 
     }
   </style>
+  <?php require("../assets/php/processProducts.php"); ?>
+  
 </head>
 
 <body>
@@ -121,11 +123,12 @@
       <h1>Login</h1>
     </div>
     <hr>
-    <form action= "ProcessLogin.php" method="POST">
-      <input type="text" placeholder="Username" id="username" required>
-      <input type="password" placeholder="Enter your password" id="password" required>
+    <form action="../assets/php/processLogin.php" method="POST">
+      <input type="text" placeholder="Username" id="username" name="username" required>
+      <input type="password" placeholder="Enter your password" id="password" name="password" required>
       <input type="submit" id="submit" value="Log in">
-    </form>
+  </form>
+  
     <div>Don't have an account? <a href="signup.html" style="color:white;">  Sign up</a></div>
     </div>
   </main>

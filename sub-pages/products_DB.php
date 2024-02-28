@@ -56,39 +56,26 @@
 
 
         #products {
-            display:flex;
+            display: flex;
             justify-content: center;
             min-height: 100vh;
 
         }
-        #products-table-wrappar{
-            background-color:cyan;
+
+        #products-table-wrappar {
+            background-color: cyan;
         }
-        #products-table-wrappar div{
-            display:flex;
+
+        #products-table-wrappar div {
+            display: flex;
         }
+
         #products-table-wrappar (table, th, tr)
-        
     </style>
     <script src="../assets/js/script.js"></script>
 </head>
 
 <body>
-    <?php
-    require("../assets/php/config.php");
-
-    $tbname = "abc_products";
-    $sqlcreatetb = "CREATE TABLE IF NOT EXISTS ABC_PRODUCTS (
-                ID INT UNSIGNED AUTO_INCREMENT PRIMARY KEY NOT NULL, 
-                NAME VARCHAR(30) NOT NULL, 
-                PRICE VARCHAR(30) NOT NULL, 
-                STOCK_QUANTITY INT, 
-                PRODUCT_PIC VARCHAR(30)
-                )";
-    if ($conn->query($sqlcreatetb) === FALSE) {
-        echo "Error create tb" . $conn->error;
-    }
-    ?>
     <header class="content-margin">
         <div class="logo-wrapper"><a href="../index.php">
                 <div class="logo" id="header-logo"></div>
@@ -130,40 +117,48 @@
                     </div>
                     <button onclick="addProduct()">Add Product</button>
                     <script>
-                        function addProduct(){
+                        function addProduct() {
 
                         }
                     </script>
                 </div>
-                <table id="products-table"> 
-                    <th>
-                        <td>ID</td>
-                        <td>NAME</td>
-                        <td>PRICE</td>
-                        <td>STOCK QUANTITY</td>
-                        <td>PRODUCT_PIC</td>
-                    </th>
+                <table id="products-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>NAME</th>
+                            <th>PRICE</th>
+                            <th>STOCK QUANTITY</th>
+                            <th>PRODUCT_PIC</th>
+                        </tr>
+                    </thead>
+
                     <?php
-                        $sqlselect = "SELECT ID, NAME, PRICE, STOCK_QUANTITY, PRODUCT_PIC FROM ABC_PRODUCTS"; 
-                        $result = $conn->query($sqlselect);
+                    require("../assets/php/config.php");
+                    require("../assets/php/processProducts.php");
+                    error_reporting(E_ALL);
+                    ini_set('display_errors', 1);
 
-                        if($result->num_rows > 0){
-                            while($row = $result->fetch_assoc()){
-                                echo "<tr>";
-                                echo "<td>". $row["id"]. "</td>";
-                                echo "<td>". $row["name"] . "</td>";
-                                echo "<td> Rs.". $row["price"] . "</td>";
-                                echo "<td>". $row["stock_quantity"]. "</td>";
-                                echo "<td>". $row["product_pic"] . "</td>";
-                                echo "</tr>";
-                            }
+                    $sqlselect = "SELECT ID, NAME, PRICE, STOCK_QUANTITY, PRODUCT_PIC FROM $tbname";
+                    $result = $conn->query($sqlselect);
+
+                    if ($result->num_rows > 0) {
+                        while ($row = $result->fetch_assoc()) {
+                            echo "<tr>";
+                            echo "<td>" . $row["ID"] . "</td>";
+                            echo "<td>" . $row["NAME"] . "</td>";
+                            echo "<td> Rs. " . $row["PRICE"] . "</td>";
+                            echo "<td>" . $row["STOCK_QUANTITY"] . "</td>";
+                            echo "<td>" . $row["PRODUCT_PIC"] . "</td>";
+                            echo "</tr>";
 
                         }
-                        else {
-                            echo "<tr> NO DATA FOUND </tr>";
-                        }
-                        ?>
-                        
+
+                    } else {
+                        echo "<tr><td colspan='5'>NO DATA FOUND</td></tr>";
+                    }
+                    ?>
+
                 </table>
             </div>
         </section>
