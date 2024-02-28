@@ -56,7 +56,7 @@
 
 <body>
     <header class="content-margin">
-        <div class="logo-wrapper"><a href="index.html">
+        <div class="logo-wrapper"><a href="index.php">
                 <div class="logo" id="header-logo"></div>
             </a>
         </div>

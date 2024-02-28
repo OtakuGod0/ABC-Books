@@ -10,10 +10,7 @@ $server = "localhost";
     
     $dbname = "abc_books";
     $sqlcreatedb = "CREATE DATABASE IF NOT EXISTS $dbname";
-    if($conn->query($sqlcreatedb) === true){
-        echo "Database create successfully <br>";
-    }
-    else {
+    if($conn->query($sqlcreatedb) === FALSE){
         echo "Error creating database". $conn->error . "<br>";
     }
 
