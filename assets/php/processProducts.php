@@ -1,13 +1,13 @@
 <?php
 require("../assets/php/config.php");
 
-$tbname = "ABC_PRODCUTS";
+$tbname = "ABC_PRODUCTS";
 $sqlcreatetb = "CREATE TABLE IF NOT EXISTS $tbname (
                 ID INT UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
                 NAME VARCHAR(30) NOT NULL, 
                 PRICE INT NOT NULL, 
                 STOCK_QUANTITY INT, 
-                CATEGORY VARCHAR(30) NOT NULL,
+                CATEGORY ENUM('Writing', 'Paper', 'Organization', 'Correction', 'Measurement', 'Others') NOT NULL,
                 PRODUCT_PIC VARCHAR(30)
                 )";
 if ($conn->query($sqlcreatetb) === FALSE) {
@@ -30,17 +30,20 @@ $sqlinsert = "INSERT INTO $tbname (ID, NAME, PRICE, STOCK_QUANTITY, CATEGORY)
       (12, 'Eraser', 5, 200, 'Correction'),
       (13, 'Correction Tape', 50, 100, 'Correction'),
       (14, 'Ruler', 15, 150, 'Measurement'),
-      (15, 'Scissors', 150, 90, 'Cutting Tools'),
       (16, 'Markers', 80, 120, 'Writing'),
       (17, 'Whiteboard Markers', 50, 100, 'Writing'),
-      (18, 'Glue Stick', 20, 180, 'Adhesive'),
-      (19, 'Stapler', 120, 70, 'Desk Tools'),
-      (20, 'Paper Shredder', 1800, 20, 'Security')
+      (18, 'Glue Stick', 20, 180, 'Others'),
+      (19, 'Stapler', 120, 70, 'Others'), 
+      (20, 'Compass', 20, 10, 'Measurement'), 
+      (21, 'Protactor', 15, 30, 'Measurement'), 
+      (22, 'Printing Paper', 100, 12, 'Paper'), 
+      (23, 'Sketch Book', 180, 142, 'Paper'), 
+      (24, 'Correction Fluid', 40, 242, 'Correction') 
       ON DUPLICATE KEY UPDATE
     NAME = VALUES(NAME),
     PRICE = VALUES(PRICE),
     STOCK_QUANTITY = VALUES(STOCK_QUANTITY),
-    CATEGORY = VALUES(CATEGORY);";
+    CATEGORY = VALUES(CATEGORY)";
 
 if ($conn->query($sqlinsert) === FALSE) {
     echo "" . $conn->error;

@@ -30,8 +30,7 @@
         }
 
         .product-wrapper>div {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
+            display: flex;
             gap: 10px;
             padding: 10px;
         }
@@ -39,6 +38,7 @@
         .product-wrapper>div>div {
             background: url("../assets/img/searchd image/cinthia-becher-OIBJaiLnMsU-unsplash.jpg") no-repeat center / cover;
             display: flex;
+            flex: 1;
             flex-direction: column;
             border-radius: 12px;
             overflow: hidden;
@@ -56,7 +56,7 @@
             color: white;
         }
 
-        .product-wrapper #product-name {
+        .product-wrapper .product-name {
             height: 35vh;
             justify-content: center;
             font-size: 25px;
@@ -64,7 +64,7 @@
             align-items: center;
         }
 
-        .product-wrapper #shop-icon {
+        .product-wrapper .shop-icon {
             height: 80%;
             box-sizing: border-box;
             aspect-ratio: 1/1;
@@ -72,7 +72,7 @@
             cursor: pointer;
         }
 
-        .product-wrapper #product-prize {
+        .product-wrapper .product-prize {
             text-align: center;
             flex-grow: 1;
         }
@@ -108,7 +108,7 @@
             margin: 5px auto;
         }
 
-        #cart input[type = "submit"] {
+        #cart input[type="submit"] {
             padding: 10px 20px;
             border-radius: 100px;
             border: none;
@@ -117,18 +117,21 @@
             font-size: 1em;
         }
 
-        #cart input[type = "submit"]:hover {
+        #cart input[type="submit"]:hover {
             cursor: pointer;
             outline: 1px solid white;
         }
-        #cart #cart-items-wrappar{
-            width:100%;
+
+        #cart #cart-items-wrappar {
+            width: 100%;
         }
+
         #cart #cart-items-wrappar div {
-            display:flex;
+            display: flex;
             justify-content: space-evenly;
         }
     </style>
+    <?php require("../assets/php/processProducts.php"); ?>
 </head>
 
 <body>
@@ -163,83 +166,52 @@
             </div>
         </section>
         <!-- products-html  -->
-        <!-- New collections  -->
         <section class="product-wrapper content-margin">
-            <h1 id="newCollection">New collection</h1>
-            <hr>
-            <div>
-                <div>
-                    <div id="product-name">Stick File</div>
-                    <div class="product-footer">
-                        <div id="shop-icon" onclick="processCart('stick_file', 20)"></div>
-                        <div id="product-prize">Rs 20</div>
-                    </div>
-                </div>
-                <div>
-                    <div id="product-name">Stick File</div>
-                    <div class="product-footer">
-                        <div id="shop-icon"></div>
-                        <div id="product-prize">Rs 20</div>
-                    </div>
-                </div>
-                <div>
-                    <div id="product-name">Stick File</div>
-                    <div class="product-footer">
-                        <div id="shop-icon"></div>
-                        <div id="product-prize">Rs 20</div>
-                    </div>
-                </div>
-            </div>
+            <?php
+
+            $categories = array('Writing', 'Paper', 'Organization', 'Correction', 'Measurement', 'Others');
+            foreach ($categories as $category) {
+                echo '<h1 id="' . $category . '">' . $category . '</h1>';
+                echo '<hr>';
+            
+                $sqlSelect = "SELECT NAME, PRICE, CATEGORY FROM $tbname WHERE CATEGORY = '" . $category . "'";
+                $result = $conn->query($sqlSelect);
+            
+                echo '<div>';
+                while ($row = $result->fetch_assoc()) {
+                    echo '<div>
+                            <div class="product-name">' . $row["NAME"] . '</div>' . '
+                            <div class="product-footer">
+                                <div class="shop-icon" onclick="processCart(\'' . $row["NAME"] . '\',' . $row["PRICE"] . ')"></div>
+                                <div class="product-prize"> Rs ' . $row["PRICE"] . '</div>
+                            </div>
+                        </div>';
+                }
+                echo '</div>';
+            }
+            ?>
         </section>
 
-        <section class="product-wrapper content-margin">
-            <h1>New collection</h1>
-            <hr>
-            <div>
-                <div>
-                    <div id="product-name">Stick File</div>
-                    <div class="product-footer">
-                        <div id="shop-icon"></div>
-                        <div id="product-prize">Rs 20</div>
-                    </div>
-                </div>
-                <div>
-                    <div id="product-name">Stick File</div>
-                    <div class="product-footer">
-                        <div id="shop-icon"></div>
-                        <div id="product-prize">Rs 20</div>
-                    </div>
-                </div>
-                <div>
-                    <div id="product-name">Stick File</div>
-                    <div class="product-footer">
-                        <div id="shop-icon"></div>
-                        <div id="product-prize">Rs 20</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <form action = "../assets/php/ProcessOrders.php" id="cart">
+        <form action="../assets/php/ProcessOrders.php" id="cart">
             <h3>CART</h3>
             <hr>
             <div id="cart-items-wrappar">
                 <script>
                     list = {};
-                    a = 1; 
-                    function processCart(x, y){
+                    a = 1;
+                    function processCart(x, y) {
                         document.getElementById("cart").style.display = "flex";
                         check = false
-                        for(let key in list){
-                            if(key == x){
+                        for (let key in list) {
+                            if (key == x) {
                                 check = true;
                             }
                         }
-                        if(check){
+                        if (check) {
                             document.getElementById(`cart-item-${x}-quantity`).innerHTML = ++list[x];
                         }
-                        else{
-                            list[x] = 1; 
+                        else {
+                            list[x] = 1;
                             document.getElementById("cart-items-wrappar").innerHTML += `
                                 <div class="cart-item-${x}"> 
                                     <span> ${a}. </span>
