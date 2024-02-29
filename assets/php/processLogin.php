@@ -20,23 +20,22 @@
     
 
     if ($user == "admin" && $pass == "admin") {
-        // Place the header() before any output
         header("Location: ../../sub-pages/products_DB.php");
         exit;
     } elseif ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
             if ($row["username"] == $user && $row["password"] == $pass) {
-                // Place the header() before any output
-                header("Location: ../index.php");
+                header("Location: ../../index.php");
                 exit;
             }
         }
-    } else {
-        echo "<script> alert(\" Incorrect Username or Password \") </script>";
-        // Place the header() before any output
-        header("Location: ../../sub-page/login.html");
+        echo 
+        "<script> 
+            alert(\" Incorrect Username or Password \");
+            window.location.href = '../../sub-pages/login.php' ; 
+        </script>";
         exit;
-    }
+    } 
     ?>
 </body>
 

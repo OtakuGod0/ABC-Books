@@ -212,7 +212,7 @@
             ?>
         </section>
 
-        <form action="../assets/php/ProcessOrders.php" id="cart">
+        <form action="../assets/php/processOrders.php" id="cart" method="POST">
             <h3>CART</h3>
             <hr>
             <table id="cart-items-wrappar">
@@ -244,10 +244,14 @@
 
                         }
                     }
-                </script>
+                </script>                    
             </table>
             <hr>
             <div id="cart-footer">
+                <input type="hidden" name="itemsList" id="itemsList">
+                <script>
+                    document.getElementById("itemsList").value = JSON.stringify(list);
+                </script>
                 <input type="submit" value="ORDER NOW">
             </div>
         </form>
