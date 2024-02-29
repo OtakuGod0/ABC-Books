@@ -45,16 +45,7 @@
             text-align: justify;
         }
 
-        #about-us-img {
-            background: url("../assets/img/home-page/About-us-side.jpg") no-repeat center / cover;
-        }
-
-        #services-img {
-            background: url("../assets/img/home-page/services-side.jpg") no-repeat center / cover;
-
-        }
-
-
+        /* Products table css */
         #products {
             display: flex;
             justify-content: center;
@@ -63,23 +54,109 @@
         }
 
         #products-table-wrappar {
-            margin:80px; 
-            background-color: cyan;
+            padding: 10px;
+
+            margin: 80px;
         }
 
-        #products-table-wrappar div {
+        #products-table-wrappar>div {
             display: flex;
             justify-content: space-between;
-            margin:10px;
+            margin: 10px;
         }
+
+        #search-bar-wrappar {
+            background-color: #e3e3fa;
+            border-radius: 20px;
+            padding: 1px 20px;
+            display: flex;
+        }
+
+        #products-table-wrappar input,
+        #products-table-wrappar select,
+        #products-table-wrappar button {
+            border: none;
+            outline: none;
+            background: none;
+        }
+
+        #products-table-wrappar tbody tr:hover {
+            background-color: black;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+            outline: 3px solid black;
+        }
+
+        #products-top-bar-wrappar {
+            height: 50px;
+        }
+
+        #products-top-bar-wrappar button {
+            padding: 0px 30px;
+            margin: 5px 0px;
+            color: white;
+            background-color: black;
+            border-radius: 10px;
+        }
+
+        #products-top-bar-wrappar button:hover {
+            cursor: pointer;
+        }
+
+        #products-table-wrappar th,
+        td {
+            padding: 5px 70px;
+        }
+
+        #products-table-wrappar #search-logo {
+            background: url('https://upload.wikimedia.org/wikipedia/commons/c/ca/VisualEditor_-_Icon_-_Search.svg');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 100%;
+            margin-right: 10px;
+            aspect-ratio: 1/1;
+        }
+
         #products-table-wrappar table {
-            border-spacing: 70px 5px;
+            border-collapse: collapse;
         }
-        #products-table-wrappar table thead{
-            text-align: left ;
+
+        #products-table-wrappar table thead {
+            background-color: #e3e3fa;
+            border: 5px solid transparent;
+            border-radius: 50px;
         }
-        #products-table-wrappar (table, th, tr)
-    </style>
+
+        /* Add Product Css */
+        #add-product-form-wrappar {
+            height:100vh; 
+            width:100vw; 
+            position: fixed;
+            display: flex;
+            justify-content:center;
+            align-items:center;
+        }
+        #add-product-form-wrappar form{
+            display:flex;
+            flex-direction:column;
+            background-color:rgba(0,0,0,0.5);
+            padding: 40px;
+            border-radius: 30px;
+            color:white;
+        }
+
+        #add-product-form-wrappar input{
+            border:5px solid white;
+            border-radius: 7px;
+            background: white;
+            margin: 2px 0px;
+            height: 20px;
+            padding: 5px;
+        }
+  
+        </style>
     <script src="../assets/js/script.js"></script>
 </head>
 
@@ -115,8 +192,9 @@
         <section id="products">
             <div id="products-table-wrappar">
                 <div id="products-top-bar-wrappar">
-                    <div class="search-bar-wrappar">
-                        <input type="text" name="search-bar" id="search-bar">
+                    <div id="search-bar-wrappar">
+                        <div id="search-logo"></div>
+                        <input type="text" name="search-bar" placeholder="search" id="search-bar">
                         <select name="search-by" id="search-by">
                             <option value="name">Name</option>
                             <option value="id">Id</option>
@@ -141,33 +219,53 @@
                     </thead>
 
                     <tbody>
-                    <?php
-                    require("../assets/php/config.php");
-                    require("../assets/php/productsDB.php");
-                    error_reporting(E_ALL);
-                    ini_set('display_errors', 1);
+                        <?php
+                        require("../assets/php/config.php");
+                        require("../assets/php/productsDB.php");
 
-                    $sqlselect = "SELECT ID, NAME, PRICE, STOCK_QUANTITY FROM $tbname";
-                    $result = $conn->query($sqlselect);
+                        $sqlselect = "SELECT ID, NAME, PRICE, STOCK_QUANTITY FROM $tbname";
+                        $result = $conn->query($sqlselect);
 
-                    if ($result->num_rows > 0) {
-                        while ($row = $result->fetch_assoc()) {
-                            echo "<tr>";
-                            echo "<td>" . $row["ID"] . "</td>";
-                            echo "<td>" . $row["NAME"] . "</td>";
-                            echo "<td> Rs. " . $row["PRICE"] . "</td>";
-                            echo "<td>" . $row["STOCK_QUANTITY"] . "</td>";
-                            echo "</tr>";
+                        if ($result->num_rows > 0) {
+                            while ($row = $result->fetch_assoc()) {
+                                echo "<tr>";
+                                echo "<td>" . $row["ID"] . "</td>";
+                                echo "<td>" . $row["NAME"] . "</td>";
+                                echo "<td> Rs. " . $row["PRICE"] . "</td>";
+                                echo "<td>" . $row["STOCK_QUANTITY"] . "</td>";
+                                echo "</tr>";
 
+                            }
+
+                        } else {
+                            echo "<tr><td colspan='4'>NO DATA FOUND</td></tr>";
                         }
-
-                    } else {
-                        echo "<tr><td colspan='4'>NO DATA FOUND</td></tr>";
-                    }
-                    ?>
-                </tbody>
+                        ?>
+                    </tbody>
                 </table>
             </div>
+        </section>
+        <section id="add-product-form-wrappar">
+            <form action="processAddProduct.php">
+                <h1 style="margin: 0;">ADD PRODUCT</h1>
+                <hr style="border:1px solid white;" width="100%">
+                <input type="text" name="name" placeholder="Product Name" required>
+                <input type="text" name="price" placeholder="Product Price" required>
+                <input type="text" name="stock_quantity" placeholder="Stock Quantity">
+                <label for="category">Category: </label><select name="category" id="category" required>
+                    <option value="Writing">Writing</option>
+                    <option value="Paper">Paper</option>
+                    <option value="Organization">Organization</option>
+                    <option value="Correction">Correction</option>
+                    <option value="Measurement">Measurement</option>
+                    <option value="Others">Others</option>
+                </select>
+                <input type="text" placeholder="Product Picture link">
+                <div>
+                <button onclick="() => { }">Cancel</button>
+                <input type="submit" value="Add Product">
+                </div>
+            </form>
         </section>
         <div class="foooter-wrapper">
             <div class="footer-logo-wrapper">

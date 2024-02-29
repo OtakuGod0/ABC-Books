@@ -14,7 +14,7 @@
         // inserting optained data
 
         $list = json_decode($_POST["itemsList"], true); 
-
+    
         
 
     ?>

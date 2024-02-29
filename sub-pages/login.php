@@ -97,7 +97,6 @@
   <?php 
     require("../assets/php/productsDB.php"); 
     require("../assets/php/userDB.php");
-
   ?>
   
 </head>
