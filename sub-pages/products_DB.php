@@ -143,7 +143,7 @@
                     <tbody>
                     <?php
                     require("../assets/php/config.php");
-                    require("../assets/php/processProducts.php");
+                    require("../assets/php/productsDB.php");
                     error_reporting(E_ALL);
                     ini_set('display_errors', 1);
 

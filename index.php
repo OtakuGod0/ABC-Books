@@ -71,7 +71,11 @@
             </ul>
         </nav>
         <div class="login-wrapper">
-            <a href="sub-pages/login.php" id="login" class="rounded-button"> Login </a>
+            <a href="sub-pages/login.php" id="login" class="rounded-button"> 
+                <?php 
+                    session_start();
+                    echo isset($_SESSION["username"]) ? $_SESSION["username"]: "Login" ; ?>
+            </a>
         </div>
     </header>
     <main>

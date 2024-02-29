@@ -94,7 +94,11 @@
 
     }
   </style>
-  <?php require("../assets/php/processProducts.php"); ?>
+  <?php 
+    require("../assets/php/productsDB.php"); 
+    require("../assets/php/userDB.php");
+
+  ?>
   
 </head>
 
