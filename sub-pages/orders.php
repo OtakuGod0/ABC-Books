@@ -66,10 +66,11 @@
             background-color: black;
             border-radius: 10px;
         }
+
         #add-order-button-wrappar a {
             margin: 0px 20px;
             margin-top: 10px;
-            display:flex;
+            display: flex;
             align-items: center;
             justify-content: center;
             color: white;
@@ -155,9 +156,7 @@
         <div class="login-wrapper">
             <a href="login.php" id="login" class="rounded-button">
                 <?php
-                session_start();
-                echo isset($_SESSION["username"]) ? $_SESSION["username"] : "Login"; 
-                ?>
+                echo isset($_COOKIE["username"]) ? $_COOKIE["username"] : "Login"; ?>
             </a>
         </div>
     </header>

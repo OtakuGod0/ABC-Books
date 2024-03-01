@@ -180,7 +180,7 @@
         <div class="login-wrapper">
         <a href="login.php" id="login" class="rounded-button"> 
                 <?php 
-                    echo isset($_SESSION["username"]) ? $_SESSION["username"]: "Login" ; ?>
+                    echo isset($_COOKIE["username"]) ? $_COOKIE["username"]: "Login" ; ?>
             </a>
         </div>
     </header>

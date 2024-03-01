@@ -17,33 +17,34 @@
 
     $sqlGetUser = "SELECT id, username, password, contact, address FROM $tbname";
     $result = $conn->query($sqlGetUser);
-    
-    session_start();
+
 
     if ($user == "admin" && $pass == "admin") {
-        $_SESSION['username'] = "admin";
+        setcookie("username", "admin", time() + 3600, "/");
         header("Location: ../../sub-pages/products_DB.php");
         exit;
     } elseif ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
             if ($row["username"] == $user && $row["password"] == $pass) {
                 //setting session to store user data 
-                $_SESSION['username'] = $row["username"];
-                $_SESSION['user_id'] = $row["id"];
-                $_SESSION['user_address'] = $row["address"];
-                $_SESSION['user_contact'] = $row["contact"];
+    
+                setcookie("username", $row["username"], time() + 3600, "/");
+                setcookie("user_id", $row["id"], time() + 3600, "/");
+                setcookie("user_address", $row["address"], time() + 3600, "/");
+                setcookie("user_contact", $row["contact"], time() + 3600, "/");
+
 
                 header("Location: ../../index.php");
                 exit;
             }
         }
-        echo 
-        "<script> 
+        echo
+            "<script> 
             alert(\" Incorrect Username or Password \");
             window.location.href = '../../sub-pages/login.php' ; 
         </script>";
         exit;
-    } 
+    }
     ?>
 </body>
 

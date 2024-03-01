@@ -4,7 +4,7 @@
 <head>
     <title>ABC Books</title>
     <?php 
-        if (isset($_SESSION["name"])){
+        if (!isset($_COOKIE["username"])){
             header('Location: sub-pages/login.php');
             exit;
         }
@@ -79,8 +79,7 @@
         <div class="login-wrapper">
             <a href="sub-pages/login.php" id="login" class="rounded-button"> 
                 <?php 
-                    session_start();
-                    echo isset($_SESSION["username"]) ? $_SESSION["username"]: "Login" ; ?>
+                    echo isset($_COOKIE["username"]) ? $_COOKIE["username"]: "Login" ; ?>
             </a>
         </div>
     </header>
