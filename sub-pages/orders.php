@@ -18,8 +18,111 @@
             background-image: url("../assets/img/home-page/background.jpg");
         }
 
-        #orders-table {
-            min-height: 70vh;
+        #orders {
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        #orders-table-wrapper {
+            padding: 10px;
+            margin: 80px;
+        }
+
+        #orders-table-wrapper>div {
+            display: flex;
+            justify-content: space-between;
+            margin: 10px;
+        }
+
+        #search-bar-wrapper {
+            background-color: #e3e3fa;
+            border-radius: 20px;
+            padding: 1px 20px;
+            display: flex;
+        }
+
+        #orders-table-wrapper input,
+        #orders-table-wrapper select,
+        #orders-table-wrapper button {
+            border: none;
+            outline: none;
+            background: none;
+        }
+
+        #orders-table-wrapper tbody tr:hover {
+            background-color: black;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+            outline: 3px solid black;
+        }
+
+        #orders-top-bar-wrapper {
+            height: 50px;
+        }
+
+        #orders-top-bar-wrapper button {
+            padding: 0px 30px;
+            margin: 5px 0px;
+            color: white;
+            background-color: black;
+            border-radius: 10px;
+        }
+
+        #orders-top-bar-wrapper button:hover {
+            cursor: pointer;
+        }
+
+        #orders-table-wrapper th,
+        td {
+            padding: 5px 40px;
+        }
+
+        #orders-table-wrapper #search-logo {
+            background: url('https://upload.wikimedia.org/wikipedia/commons/c/ca/VisualEditor_-_Icon_-_Search.svg');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 100%;
+            margin-right: 10px;
+            aspect-ratio: 1/1;
+        }
+
+        #orders-table-wrapper table {
+            border-collapse: collapse;
+        }
+
+        #orders-table-wrapper table thead {
+            background-color: #e3e3fa;
+            border: 5px solid transparent;
+            border-radius: 50px;
+        }
+
+        #orders-table-wrapper table td>div {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        #edit,
+        #delete {
+            height: 100%;
+            aspect-ratio: 1 / 1;
+        }
+
+        #orders-table-wrapper #icon-wrapper {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            margin: 5px 40px;
+        }
+
+        #orders-table-wrapper tr:hover #delete {
+            background: url("../assets/img/icons/delete.svg") no-repeat center / cover;
+        }
+
+        #orders-table-wrapper tr:hover #edit {
+            background: url("../assets/img/icons/edit.svg") no-repeat center / cover;
         }
     </style>
     <script src="assets/js/script.js"></script>
@@ -38,14 +141,18 @@
                 <li><a href="../index.php#about-us">About Us</a></li>
                 <li><a href="../index.php#services">Services</a></li>
                 <li><a href="../index.php#contact">Contact</a></li>
-                <li><a href="products.php#newCollection">Products</a></li>
+                <li><a href="products.php#products">Products</a></li>
             </ul>
 
         </nav>
         <div class="login-wrapper">
-            <a href="sub-pages/login.html" id="login" class="rounded-button"> Login </a>
+            <a href="login.php" id="login" class="rounded-button">
+                <?php
+                echo isset($_SESSION["username"]) ? $_SESSION["username"] : "Login"; ?>
+            </a>
         </div>
     </header>
+
     <main>
         <section id="home" class="background">
             <div class="home-content-wrapper" style="text-align:center;">
@@ -58,7 +165,83 @@
                 </div>
             </div>
         </section>
-        <section id="orders-table"></section>
+        <section id="orders">
+            <div id="orders-table-wrapper">
+                <div id="orders-top-bar-wrapper">
+                    <div id="search-bar-wrapper">
+                        <div id="search-logo"></div>
+                        <input type="text" name="search-bar" placeholder="search" id="search-bar">
+                        <select name="search-by" id="search-by">
+                            <option value="product_name">Product Name</option>
+                            <option value="id">Id</option>
+                            <option value="product_price">Product Price</option>
+                        </select>
+                    </div>
+                    <button onclick="addOrder()">Add Order</button>
+
+                    <script>
+                        function addOrder() {
+                            // Add your logic to display the add order form
+                        }
+                    </script>
+                </div>
+                <table id="orders-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>PRODUCT NAME</th>
+                            <th>PRODUCT PRICE</th>
+                            <th>QUANTITY</th>
+                            <th>USERNAME</th>
+                            <th>USER ADDRESS</th>
+                            <th>USER CONTACT</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <?php
+                        require("../assets/php/config.php");
+                        // Adjust the table name according to your setup
+                        $ordersTableName = "ABC_ORDERS";
+                        $sqlselect = "SELECT ID, PRODUCT_NAME, PRODUCT_PRICE, QUANTITY, USERNAME, USER_ADDRESS, USER_CONTACT FROM $ordersTableName";
+                        $result = $conn->query($sqlselect);
+
+                        if ($result->num_rows > 0) {
+                            while ($row = $result->fetch_assoc()) {
+                                echo "<tr>";
+                                echo "<td>" . $row["ID"] . "</td>";
+                                echo "<td>" . $row["PRODUCT_NAME"] . "</td>";
+                                echo "<td> Rs. " . $row["PRODUCT_PRICE"] . "</td>";
+                                echo "<td>" . $row["QUANTITY"] . "</td>";
+                                echo "<td>" . $row["USERNAME"] . "</td>";
+                                echo "<td>" . $row["USER_ADDRESS"] . "</td>";
+                                echo "<td>" . $row["USER_CONTACT"];
+                                echo "
+                           
+                                <div>
+                                    
+                                    <div id='icon-wrapper'> 
+                                        <form action='../assets/php/processDeleteOrder.php' method='post' id='delete' onclick='processDeleteOrder()'>
+                                            <input type='hidden' name='order_id' value='" . $row["ID"] . "'> 
+                                        </form>
+                                        <div id='edit' data-id='" . $row['ID'] . "' data-name='" . $row['PRODUCT_NAME'] . "' data-price='" . $row['PRODUCT_PRICE'] . "' data-quantity='" . $row['QUANTITY'] . "' data-username='" . $row['USERNAME'] . "' data-address='" . $row['USER_ADDRESS'] . "' data-contact='" . $row['USER_CONTACT'] . "' onclick='processEditOrder(this)'></div>
+                                    </div>
+                                </div></td>
+                           
+                        ";
+
+                                echo "</tr>";
+                            }
+                        } else {
+                            echo "<tr><td colspan='7'>NO DATA FOUND</td></tr>";
+                        }
+                        ?>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+
     </main>
     <div class="foooter-wrapper">
         <div class="footer-logo-wrapper">

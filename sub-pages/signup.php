@@ -49,12 +49,12 @@
 
         #name_wrapper {
             display: flex;
-            gap:10px;
+            gap: 10px;
             width: 100%;
         }
 
         #name_wrapper>* {
-            width:50%;
+            width: 50%;
         }
 
         input {
@@ -110,13 +110,15 @@
         input::placeholder {
             font-family: Montserrat;
         }
-        .form-wrapper{
-            margin-top:100px;
+
+        .form-wrapper {
+            margin-top: 100px;
             padding: 20px;
-            border-radius:40px;
+            border-radius: 40px;
             background-color: rgba(0, 0, 0, 0.8);
 
         }
+
         @media only screen and (max-width: 767px) {
             main {
                 width: 100%;
@@ -133,23 +135,26 @@
 
 <body>
     <header class="content-margin">
-    <div class="logo-wrapper"><a href="index.html">
-            <div class="logo" id="header-logo"></div>
-        </a>
-    </div>
-    <nav>
-        <ul>
-          <li><a href="../index.php#home">Home</a></li>
-          <li><a href="../index.php#about-us">About Us</a></li>
-          <li><a href="../index.php#services">Services</a></li>
-          <li><a href="../index.php#contact">Contact</a></li>
-        </ul>
-    </nav>
-    <div class="login-wrapper">
-        <a href="#" id="login" class="rounded-button">
-            Login </a>
-    </div>
-</header>
+        <div class="logo-wrapper"><a href="index.html">
+                <div class="logo" id="header-logo"></div>
+            </a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="../index.php#home">Home</a></li>
+                <li><a href="../index.php#about-us">About Us</a></li>
+                <li><a href="../index.php#services">Services</a></li>
+                <li><a href="../index.php#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="login-wrapper">
+            <a href="login.php" id="login" class="rounded-button">
+                <?php
+                echo isset($_SESSION["username"]) ? $_SESSION["username"] : "Login"; ?>
+            </a>
+        </div>
+
+    </header>
     <main>
         <div class="form-wrapper">
             <div>
@@ -159,13 +164,13 @@
             <form action="../assets/php/processSignup.php" onsubmit="return validate()" method="POST">
                 <div id="name_wrapper">
                     <input type="text" placeholder="First name" id="firstname" name="firstname" required>
-                    <input type="text" placeholder="Last name" id="lastname" name ="lastname" required>
+                    <input type="text" placeholder="Last name" id="lastname" name="lastname" required>
                 </div>
-                <input type="text" id="address" placeholder="Address" name = "address" required>
-                <input type="text" id="Contact" placeholder="Contact Number" name="contact" required >
+                <input type="text" id="address" placeholder="Address" name="address" required>
+                <input type="text" id="Contact" placeholder="Contact Number" name="contact" required>
                 <input type="text" placeholder="Username" id="username" name="username" required>
-                <input type="password" placeholder="Create password" id="password"  name = "password" required>
-                <input type="password" placeholder="Confirm password" id="password2" name = "password2" required>
+                <input type="password" placeholder="Create password" id="password" name="password" required>
+                <input type="password" placeholder="Confirm password" id="password2" name="password2" required>
                 <div id="gender_wrapper">
                     <label>Gender:</label>
                     <input type="radio" name="gender" value="male" id="male" required><label for="male">Male</label>
@@ -179,20 +184,20 @@
                 <input type="submit" id="submit" value="Submit">
             </form>
             <script>
-                function validate(){
+                function validate() {
                     var password = document.getElementById("password")
                     var password2 = document.getElementById("password2")
 
                     let isValid = true;
 
-                    if(!password.value === password2.value){
+                    if (!password.value === password2.value) {
                         password.classList.add("error");
                         password2.classList.add("error");
                         password.value = "";
                         password2.value = "";
                         isValid = false;
                     }
-                    return isValid;        
+                    return isValid;
                 }
             </script>
         </div>

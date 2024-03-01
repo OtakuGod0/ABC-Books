@@ -4,7 +4,6 @@
 <head>
     <title>ABC Books</title>
     <?php 
-        session_start();
         if (isset($_SESSION["name"])){
             header('Location: sub-pages/login.php');
             exit;
@@ -119,7 +118,7 @@
                         <li><a href="sub-pages/survey.html">Join our survey</a></li>
                         <li><a href="sub-pages/products.php#products">Products</a></li>
                         <li><a href="sub-pages/preordered-printing.html">Pre ordered printing</a></li>
-                        <li><a href="sub-pages/orders.php">Orders</a></li>
+                        <li><a href="sub-pages/orders.php#orders-table">Orders</a></li>
                     </ul></nav>
                 </article>
             </div>

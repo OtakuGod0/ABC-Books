@@ -18,15 +18,16 @@
     $sqlGetUser = "SELECT id, username, password, contact, address FROM $tbname";
     $result = $conn->query($sqlGetUser);
     
+    session_start();
 
     if ($user == "admin" && $pass == "admin") {
+        $_SESSION['username'] = "admin";
         header("Location: ../../sub-pages/products_DB.php");
         exit;
     } elseif ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
             if ($row["username"] == $user && $row["password"] == $pass) {
                 //setting session to store user data 
-                session_start();
                 $_SESSION['username'] = $row["username"];
                 $_SESSION['user_id'] = $row["id"];
                 $_SESSION['user_address'] = $row["address"];

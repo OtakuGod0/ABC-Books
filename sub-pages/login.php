@@ -133,7 +133,7 @@
       <input type="submit" id="submit" value="Log in">
   </form>
   
-    <div>Don't have an account? <a href="signup.html" style="color:white;">  Sign up</a></div>
+    <div>Don't have an account? <a href="signup.php" style="color:white;">  Sign up</a></div>
     </div>
   </main>
 </body>

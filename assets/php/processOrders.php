@@ -36,7 +36,7 @@
             echo "Error inserting data" . $conn->error;
         }
 
-        header("Location: ../../sub-pages/orders.php");
+        header("Location: ../../sub-pages/orders.php#orders-table");
         exit;
     }
     ?>
