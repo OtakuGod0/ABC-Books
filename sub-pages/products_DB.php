@@ -106,7 +106,7 @@
 
         #products-table-wrappar th,
         td {
-            padding: 5px 70px;
+            padding: 5px 40px;
         }
 
         #products-table-wrappar #search-logo {
@@ -264,6 +264,7 @@
                             <th>NAME</th>
                             <th>PRICE</th>
                             <th>STOCK QUANTITY</th>
+                            <th>CATEGORY </th>
                         </tr>
                     </thead>
 
@@ -272,7 +273,7 @@
                         require("../assets/php/config.php");
                         require("../assets/php/productsDB.php");
 
-                        $sqlselect = "SELECT ID, NAME, PRICE, STOCK_QUANTITY FROM $tbname";
+                        $sqlselect = "SELECT ID, NAME, PRICE, STOCK_QUANTITY, CATEGORY FROM $tbname";
                         $result = $conn->query($sqlselect);
 
                         if ($result->num_rows > 0) {
@@ -282,6 +283,7 @@
                                 echo "<td>" . $row["NAME"] . "</td>";
                                 echo "<td> Rs. " . $row["PRICE"] . "</td>";
                                 echo "<td>" . $row["STOCK_QUANTITY"] . "</td>";
+                                echo "<td>" . $row["CATEGORY"] . "</td>";
                                 echo "</tr>";
 
                             }
@@ -296,7 +298,7 @@
         </section>
         <section id="add-product-form-wrappar" style="display:none;">
             <div id="blurred-background"></div>
-            <form action="../assets/php/processAddProduct.php">
+            <form action="../assets/php/processAddProduct.php" method="POST">
                 <h1 style="margin: 0;">ADD PRODUCT</h1>
                 <hr style="border:1px solid white;" width="100%">
                 <input type="text" name="name" placeholder="Product Name" required>
@@ -312,7 +314,7 @@
                         <option value="Others">Others</option>
                     </select>
                 </div>
-                <input type="text" placeholder="Product Picture link">
+                <input type="text" name="product_pic" placeholder="Product Picture link">
                 <div>
 
                     <button type="button" onclick="addProductCancel()">Cancel</button>

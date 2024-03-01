@@ -62,6 +62,7 @@
             flex-direction: column;
             border-radius: 12px;
             overflow: hidden;
+
         }
 
         .product-wrapper>div>div>div {
@@ -82,6 +83,13 @@
             font-size: 25px;
             font-weight: bold;
             align-items: center;
+        }
+        .product-wrapper .product-name div {
+            padding: 10px 20px;
+            border-radius: 20px;
+            background-color: rgba(0, 0, 0, 0.8);
+            color:white;
+
         }
 
         .product-wrapper .shop-icon {
@@ -194,13 +202,13 @@
                 echo '<h1 id="' . $category . '" style="margin-top:50px">' . strtoupper($category) . '</h1>';
                 echo '<hr>';
 
-                $sqlSelect = "SELECT NAME, PRICE, CATEGORY FROM $tbname WHERE CATEGORY = '" . $category . "'";
+                $sqlSelect = "SELECT NAME, PRICE, CATEGORY,PRODUCT_PIC FROM $tbname WHERE CATEGORY = '" . $category . "'";
                 $result = $conn->query($sqlSelect);
 
                 echo '<div class="product-flex-container">';
                 while ($row = $result->fetch_assoc()) {
-                    echo '<div>
-                            <div class="product-name">' . $row["NAME"] . '</div>' . '
+                    echo '<div style="background: url(&quot;' . htmlspecialchars($row["PRODUCT_PIC"]) . '&quot;) no-repeat center / cover;">
+                            <div class="product-name"> <div>' . $row["NAME"] . '</div></div>
                             <div class="product-footer">
                                 <div class="shop-icon" onclick="processCart(\'' . $row["NAME"] . '\',' . $row["PRICE"] . ')"></div>
                                 <div class="product-prize"> Rs ' . $row["PRICE"] . '</div>
