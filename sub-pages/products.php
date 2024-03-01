@@ -96,7 +96,7 @@
             height: 80%;
             box-sizing: border-box;
             aspect-ratio: 1/1;
-            background: url(../assets/img/shop-icon.png) no-repeat center / cover;
+            background: url(../assets/img/icons/shop-icon.png) no-repeat center / cover;
             cursor: pointer;
         }
 
@@ -220,7 +220,7 @@
             ?>
         </section>
 
-        <form action="../assets/php/processOrders.php" id="cart" method="POST">
+        <form onsubmit="passCart()" action="../assets/php/processOrders.php" id="cart" method="POST">
             <h3>CART</h3>
             <hr>
             <table id="cart-items-wrappar">
@@ -258,7 +258,9 @@
             <div id="cart-footer">
                 <input type="hidden" name="itemsList" id="itemsList">
                 <script>
-                    document.getElementById("itemsList").value = JSON.stringify(list);
+                    function passCart(){
+                        document.getElementById("itemsList").value = JSON.stringify(list);
+                    }
                 </script>
                 <input type="submit" value="ORDER NOW">
             </div>

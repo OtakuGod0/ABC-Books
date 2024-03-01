@@ -129,6 +129,34 @@
             border-radius: 50px;
         }
 
+        #products-table-wrappar table td>div {
+            display: flex;
+            justify-content: space-between;
+
+        }
+
+        #edit,
+        #delete {
+            height: 100%;
+            aspect-ratio: 1 / 1;
+        }
+
+        #products-table-wrappar #icon-wrappar {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            margin: 5px 40px;
+        }
+
+        #products-table-wrappar tr:hover #delete {
+            background: url("../assets/img/icons/delete.svg") no-repeat center / cover;
+        }
+
+        #products-table-wrappar tr:hover #edit {
+            background: url("../assets/img/icons/edit.svg") no-repeat center / cover;
+        }
+
+
         /* Add Product Css */
         #add-product-form-wrappar {
             overflow: hidden;
@@ -203,8 +231,111 @@
             border-radius: 7px;
             margin: none;
         }
+
+
+        /* update Product Css */
+        #update-product-form-wrappar {
+            overflow: hidden;
+            height: 100vh;
+            width: 100vw;
+            position: fixed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #update-product-form-wrappar #blurred-background {
+            z-index: -1;
+            position: absolute;
+            margin: 0px;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 100%;
+            background-color: black;
+            filter: blur(220px);
+        }
+
+        #update-product-form-wrappar form div {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        #update-product-form-wrappar form {
+            display: flex;
+            flex-direction: column;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 40px;
+            border-radius: 30px;
+            color: white;
+        }
+
+        #update-product-form-wrappar input[type="text"] {
+            border: 5px solid white;
+            border-radius: 7px;
+            background: white;
+            height: 20px;
+            padding: 5px;
+        }
+
+        #update-product-form-wrappar form>* {
+            margin: 5px 0;
+        }
+
+        #update-product-form-wrappar form div:last-child {
+            display: flex;
+            justify-content: right;
+            gap: 5px;
+        }
+
+        #update-product-form-wrappar form div:last-child>* {
+            padding: 9px 15px;
+            border: 3px solid black;
+            border-radius: 7px;
+            color: white;
+            background-color: black;
+        }
+
+        #update-product-form-wrappar form div:last-child>*:hover {
+            outline: 1px solid white;
+            cursor: pointer;
+        }
+
+        #update-product-form-wrappar select {
+            padding: 5px;
+            border: 3px solid white;
+            border-radius: 7px;
+            margin: none;
+        }
     </style>
     <script src="../assets/js/script.js"></script>
+    <script>
+        function processEdit(element) {
+            var id = element.getAttribute('data-id');
+            var name = element.getAttribute('data-name');
+            var price = element.getAttribute('data-price');
+            var stock_quantity = element.getAttribute('data-stock');
+            var category = element.getAttribute('data-category'); 
+            var product_pic = element.getAttribute('data-pic');
+
+            console.log(name, price, stock_quantity, category);
+            document.getElementById("productId").value = id;
+            document.getElementById("productName").value = name;
+            document.getElementById("productPrice").value = price;
+            document.getElementById("stockQuantity").value = stock_quantity;
+            document.getElementById("productCategory").value = category;
+            document.getElementById("productPic").value = product_pic;
+
+            document.getElementById("update-product-form-wrappar").style.display = 'flex';
+        }
+
+    </script>
+    <script>
+        function processDelete() {
+            document.getElementById("delete").submit();
+        }
+
+    </script>
 </head>
 
 <body>
@@ -273,7 +404,7 @@
                         require("../assets/php/config.php");
                         require("../assets/php/productsDB.php");
 
-                        $sqlselect = "SELECT ID, NAME, PRICE, STOCK_QUANTITY, CATEGORY FROM $tbname";
+                        $sqlselect = "SELECT ID, NAME, PRICE, STOCK_QUANTITY, CATEGORY, PRODUCT_PIC FROM $tbname";
                         $result = $conn->query($sqlselect);
 
                         if ($result->num_rows > 0) {
@@ -283,15 +414,28 @@
                                 echo "<td>" . $row["NAME"] . "</td>";
                                 echo "<td> Rs. " . $row["PRICE"] . "</td>";
                                 echo "<td>" . $row["STOCK_QUANTITY"] . "</td>";
-                                echo "<td>" . $row["CATEGORY"] . "</td>";
-                                echo "</tr>";
+                                echo "<td> <div> <div> " . $row["CATEGORY"];
+                                echo "
+                                    </div>
+                                    <div id=icon-wrappar> 
+                                        <form action='../assets/php/processDelete.php' method='post' id='delete' onclick='processDelete()'>
+                                            <input type='hidden' name='product_id' value='" . $row["ID"] . "'> 
+                                        </form>";
+                                echo "<div id='edit' data-id='" . $row['ID'] . "' data-name='" . $row['NAME'] . "' data-pic='" . $row['PRODUCT_PIC'] . "' data-price='" . $row['PRICE'] . "' data-stock='" . $row['STOCK_QUANTITY'] . "' data-category='" . $row['CATEGORY'] . "' onclick='processEdit(this)'></div>";
+                                echo "
+                                    </div>
+                                    </td> </div>
+                                ";
 
+                                echo "</tr>";
                             }
+
 
                         } else {
                             echo "<tr><td colspan='4'>NO DATA FOUND</td></tr>";
                         }
                         ?>
+
                     </tbody>
                 </table>
             </div>
@@ -319,14 +463,50 @@
 
                     <button type="button" onclick="addProductCancel()">Cancel</button>
                     <script>
-                        function addProductCancel(){ 
-                            document.getElementById("add-product-form-wrappar").style.display = "none"; 
+                        function addProductCancel() {
+                            document.getElementById("add-product-form-wrappar").style.display = "none";
                         }
                     </script>
                     <input type="submit" value="Add Product">
                 </div>
             </form>
         </section>
+
+        <section id="update-product-form-wrappar" style="display:none;">
+            <div id="blurred-background"></div>
+            <form action="../assets/php/processUpdateProduct.php" method="POST">
+                <h1 style="margin: 0;">UPDATE PRODUCT</h1>
+                <hr style="border:1px solid white;" width="100%">
+                <input type="hidden" id="productId" name ="id">
+                <input type="text" id="productName" name="name" placeholder="Product Name" required>
+                <input type="text" id="productPrice" name="price" placeholder="Product Price" required>
+                <input type="text" id="stockQuantity" name="stock_quantity" placeholder="Stock Quantity">
+                <div>
+                    <label for="category">Category:</label>
+                    <select id="productCategory" name="category" required>
+                        <option value="Writing">Writing</option>
+                        <option value="Paper">Paper</option>
+                        <option value="Organization">Organization</option>
+                        <option value="Correction">Correction</option>
+                        <option value="Measurement">Measurement</option>
+                        <option value="Others">Others</option>
+                    </select>
+                </div>
+                <input type="text" id="productPic" name="product_pic" placeholder="Product Picture link">
+
+                <div>
+
+                    <button type="button" onclick="updateProductCancel()">Cancel</button>
+                    <script>
+                        function updateProductCancel() {
+                            document.getElementById("update-product-form-wrappar").style.display = "none";
+                        }
+                    </script>
+                    <input type="submit" value="Update Product">
+                </div>
+            </form>
+        </section>
+
         <div class="foooter-wrapper">
             <div class="footer-logo-wrapper">
                 <div class="logo" id="footer-logo"></div>

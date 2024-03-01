@@ -19,7 +19,7 @@
     }
 
      //default user
-     $sqlinsert = "INSERT INTO $tbname (username, name, password, contact, address) VALUES('default', 'default', 'default' , 'xxxx', 'xxxxx')
+     $sqlinsert = "INSERT INTO $tbname (username, name, password, contact, address) VALUES('default', 'default', 'default' , '01-4523706', 'lainchour, kathmandu')
      ON DUPLICATE KEY UPDATE username = 'default', name = 'default', password = 'default', contact = 'xxxx', address='xxxxx'";
 
      if($conn->query($sqlinsert) === FALSE){
