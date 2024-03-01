@@ -3,6 +3,13 @@
 
 <head>
     <title>ABC Books</title>
+    <?php 
+        session_start();
+        if (isset($_SESSION["name"])){
+            header('Location: sub-pages/login.php');
+            exit;
+        }
+        ?>
     <link rel="stylesheet" href="assets/css/global.css">
     <style>
 

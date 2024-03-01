@@ -131,32 +131,79 @@
 
         /* Add Product Css */
         #add-product-form-wrappar {
-            height:100vh; 
-            width:100vw; 
+            overflow: hidden;
+            height: 100vh;
+            width: 100vw;
             position: fixed;
             display: flex;
-            justify-content:center;
-            align-items:center;
-        }
-        #add-product-form-wrappar form{
-            display:flex;
-            flex-direction:column;
-            background-color:rgba(0,0,0,0.5);
-            padding: 40px;
-            border-radius: 30px;
-            color:white;
+            justify-content: center;
+            align-items: center;
         }
 
-        #add-product-form-wrappar input{
-            border:5px solid white;
+        #add-product-form-wrappar #blurred-background {
+            z-index: -1;
+            position: absolute;
+            margin: 0px;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 100%;
+            background-color: black;
+            filter: blur(220px);
+        }
+
+        #add-product-form-wrappar form div {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        #add-product-form-wrappar form {
+            display: flex;
+            flex-direction: column;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 40px;
+            border-radius: 30px;
+            color: white;
+        }
+
+        #add-product-form-wrappar input[type="text"] {
+            border: 5px solid white;
             border-radius: 7px;
             background: white;
-            margin: 2px 0px;
             height: 20px;
             padding: 5px;
         }
-  
-        </style>
+
+        #add-product-form-wrappar form>* {
+            margin: 5px 0;
+        }
+
+        #add-product-form-wrappar form div:last-child {
+            display: flex;
+            justify-content: right;
+            gap: 5px;
+        }
+
+        #add-product-form-wrappar form div:last-child>* {
+            padding: 9px 15px;
+            border: 3px solid black;
+            border-radius: 7px;
+            color: white;
+            background-color: black;
+        }
+
+        #add-product-form-wrappar form div:last-child>*:hover {
+            outline: 1px solid white;
+            cursor: pointer;
+        }
+
+        #add-product-form-wrappar select {
+            padding: 5px;
+            border: 3px solid white;
+            border-radius: 7px;
+            margin: none;
+        }
+    </style>
     <script src="../assets/js/script.js"></script>
 </head>
 
@@ -202,10 +249,12 @@
                         </select>
                     </div>
                     <button onclick="addProduct()">Add Product</button>
+
                     <script>
                         function addProduct() {
-
+                            document.getElementById("add-product-form-wrappar").style.display = "flex";
                         }
+
                     </script>
                 </div>
                 <table id="products-table">
@@ -245,25 +294,34 @@
                 </table>
             </div>
         </section>
-        <section id="add-product-form-wrappar">
-            <form action="processAddProduct.php">
+        <section id="add-product-form-wrappar" style="display:none;">
+            <div id="blurred-background"></div>
+            <form action="../assets/php/processAddProduct.php">
                 <h1 style="margin: 0;">ADD PRODUCT</h1>
                 <hr style="border:1px solid white;" width="100%">
                 <input type="text" name="name" placeholder="Product Name" required>
                 <input type="text" name="price" placeholder="Product Price" required>
                 <input type="text" name="stock_quantity" placeholder="Stock Quantity">
-                <label for="category">Category: </label><select name="category" id="category" required>
-                    <option value="Writing">Writing</option>
-                    <option value="Paper">Paper</option>
-                    <option value="Organization">Organization</option>
-                    <option value="Correction">Correction</option>
-                    <option value="Measurement">Measurement</option>
-                    <option value="Others">Others</option>
-                </select>
+                <div>
+                    <label for="category">Category:</label><select name="category" id="category" required>
+                        <option value="Writing">Writing</option>
+                        <option value="Paper">Paper</option>
+                        <option value="Organization">Organization</option>
+                        <option value="Correction">Correction</option>
+                        <option value="Measurement">Measurement</option>
+                        <option value="Others">Others</option>
+                    </select>
+                </div>
                 <input type="text" placeholder="Product Picture link">
                 <div>
-                <button onclick="() => { }">Cancel</button>
-                <input type="submit" value="Add Product">
+
+                    <button type="button" onclick="addProductCancel()">Cancel</button>
+                    <script>
+                        function addProductCancel(){ 
+                            document.getElementById("add-product-form-wrappar").style.display = "none"; 
+                        }
+                    </script>
+                    <input type="submit" value="Add Product">
                 </div>
             </form>
         </section>
