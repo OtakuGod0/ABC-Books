@@ -44,7 +44,7 @@
 
         #orders-table-wrapper input,
         #orders-table-wrapper select,
-        #orders-table-wrapper button {
+        #orders-table-wrapper #add-order-button-wrappar {
             border: none;
             outline: none;
             background: none;
@@ -62,15 +62,22 @@
             height: 50px;
         }
 
-        #orders-top-bar-wrapper button {
-            padding: 0px 30px;
-            margin: 5px 0px;
-            color: white;
+        #orders-top-bar-wrapper #add-order-button-wrappar {
             background-color: black;
             border-radius: 10px;
         }
+        #add-order-button-wrappar a {
+            margin: 0px 20px;
+            margin-top: 10px;
+            display:flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
 
-        #orders-top-bar-wrapper button:hover {
+        }
+
+        #orders-top-bar-wrapper #add-order-button-wrappar:hover {
             cursor: pointer;
         }
 
@@ -148,7 +155,9 @@
         <div class="login-wrapper">
             <a href="login.php" id="login" class="rounded-button">
                 <?php
-                echo isset($_SESSION["username"]) ? $_SESSION["username"] : "Login"; ?>
+                session_start();
+                echo isset($_SESSION["username"]) ? $_SESSION["username"] : "Login"; 
+                ?>
             </a>
         </div>
     </header>
@@ -177,13 +186,10 @@
                             <option value="product_price">Product Price</option>
                         </select>
                     </div>
-                    <button onclick="addOrder()">Add Order</button>
+                    <div id="add-order-button-wrappar">
+                        <a href="products.php#products">Add Order</a>
+                    </div>
 
-                    <script>
-                        function addOrder() {
-                            // Add your logic to display the add order form
-                        }
-                    </script>
                 </div>
                 <table id="orders-table">
                     <thead>
@@ -201,7 +207,7 @@
                     <tbody>
                         <?php
                         require("../assets/php/config.php");
-                        // Adjust the table name according to your setup
+
                         $ordersTableName = "ABC_ORDERS";
                         $sqlselect = "SELECT ID, PRODUCT_NAME, PRODUCT_PRICE, QUANTITY, USERNAME, USER_ADDRESS, USER_CONTACT FROM $ordersTableName";
                         $result = $conn->query($sqlselect);
