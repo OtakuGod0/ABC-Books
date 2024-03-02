@@ -341,7 +341,8 @@
 
 <body>
     <header class="content-margin">
-        <div class="logo-wrapper"><a href="../index.php">
+        <div class="logo-wrapper">
+            <a href="../index.php">
                 <div class="logo" id="header-logo"></div>
             </a>
         </div>
@@ -355,7 +356,7 @@
         <div class="login-wrapper">
         <a href="login.php" id="login" class="rounded-button"> 
                 <?php 
-                    echo isset($_SESSION["username"]) ? $_SESSION["username"]: "Login" ; ?>
+                    echo isset($_COOKIE["username"]) ? $_COOKIE["username"]: "Login" ; ?>
             </a>
         </div>
     </header>
@@ -422,7 +423,7 @@
                                 echo "
                                     </div>
                                     <div id=icon-wrappar> 
-                                        <form action='../assets/php/processDelete.php' method='post' id='delete' onclick='processDelete()'>
+                                        <form action='../assets/php/processDelete.php' method='POST' id='delete' onclick='processDelete()'>
                                             <input type='hidden' name='product_id' value='" . $row["ID"] . "'> 
                                         </form>";
                                 echo "<div id='edit' data-id='" . $row['ID'] . "' data-name='" . $row['NAME'] . "' data-pic='" . $row['PRODUCT_PIC'] . "' data-price='" . $row['PRICE'] . "' data-stock='" . $row['STOCK_QUANTITY'] . "' data-category='" . $row['CATEGORY'] . "' onclick='processEdit(this)'></div>";
