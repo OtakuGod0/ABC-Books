@@ -15,7 +15,7 @@ $sqlinsert = "INSERT INTO $tbname (PRODUCT_NAME, PRODUCT_PRICE, USERNAME, USER_A
 if ($conn->query($sqlinsert) === FALSE) {
     echo "error inserting values" . $conn->error;
 } else {
-    header("Location: ../../sub-pages/orders_DB.php");
+    header("Location: ../../sub-pages/orders_DB.php#orders.php");
     exit;
 }
 ?>

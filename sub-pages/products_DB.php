@@ -183,12 +183,15 @@
 
         #add-product-form-wrappar form div {
             display: flex;
-            justify-content: space-between;
+            gap: 10px;
+            justify-content: space;
         }
-
+        #add-product-form-wrappar form select{
+            flex-grow: 1;
+        }
         #add-product-form-wrappar form {
             display: flex;
-            width: 40vw !important;
+            width: 25vw !important;
             flex-direction: column;
             background-color: rgba(0, 0, 0, 0.5);
             padding: 40px;
@@ -332,12 +335,7 @@
         }
 
     </script>
-    <script>
-        function processDelete() {
-            document.getElementById("delete").submit();
-        }
-
-    </script>
+   
 </head>
 
 <body>

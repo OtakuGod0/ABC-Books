@@ -19,8 +19,13 @@
     $result = $conn->query($sqlGetUser);
 
 
-    if ($user == "admin" && $pass == "admin") {
+    if ($user == "admin" && $pass == "admin") { 
         setcookie("username", "admin", time() + 3600, "/");
+        setcookie("user_id", 0, time() + 3600, "/");
+        setcookie("user_address", "Lainchour, Kathmandu", time() + 3600, "/");
+        setcookie("user_contact", "01-4523706", time() + 3600, "/");
+
+        
         header("Location: ../../sub-pages/products_DB.php#products");
         exit;
     } elseif ($result->num_rows > 0) {

@@ -157,13 +157,14 @@
 
         #add-orders-form-wrapper form {
             display: flex;
-            width: 40vw !important;
+            width: 25vw !important;
             flex-direction: column;
             background-color: rgba(0, 0, 0, 0.5);
             padding: 40px;
             border-radius: 30px;
             color: white;
         }
+
 
         #add-orders-form-wrapper input[type="text"] {
             border: 5px solid white;
@@ -195,8 +196,122 @@
             outline: 1px solid white;
             cursor: pointer;
         }
+
+        /* Update Order CSS */
+        #update-order-form-wrappar {
+            overflow: hidden;
+            height: 100vh;
+            width: 100vw;
+            position: fixed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #update-order-form-wrappar #blurred-background {
+            z-index: -1;
+            position: absolute;
+            margin: 0px;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 100%;
+            background-color: black;
+            filter: blur(220px);
+        }
+
+        #update-order-form-wrappar form div {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        #update-order-form-wrappar form {
+            display: flex;
+            flex-direction: column;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 40px;
+            border-radius: 30px;
+            color: white;
+        }
+
+        #update-order-form-wrappar input[type="text"] {
+            border: 5px solid white;
+            border-radius: 7px;
+            background: white;
+            height: 20px;
+            padding: 5px;
+        }
+
+        #update-order-form-wrappar form>* {
+            margin: 5px 0;
+        }
+
+        #update-order-form-wrappar form div:last-child {
+            display: flex;
+            justify-content: right;
+            gap: 5px;
+        }
+
+        #update-order-form-wrappar form div:last-child>* {
+            padding: 9px 15px;
+            border: 3px solid black;
+            border-radius: 7px;
+            color: white;
+            background-color: black;
+        }
+
+        #update-order-form-wrappar form div:last-child>*:hover {
+            outline: 1px solid white;
+            cursor: pointer;
+        }
+
+        #update-order-form-wrappar select {
+            padding: 5px;
+            border: 3px solid white;
+            border-radius: 7px;
+            margin: none;
+        }
     </style>
-    <script src="assets/js/script.js"></script>
+    <script src="../assets/js/script.js"></script>
+    <script>
+        function processEditOrder(element) {
+            var id = element.getAttribute('data-id');
+            var name = element.getAttribute('data-name');
+            var price = element.getAttribute('data-price');
+            var username = element.getAttribute('data-username');
+            var address = element.getAttribute('data-address');
+            var contact = element.getAttribute('data-contact');
+            var quantity = element.getAttribute('data-quantity');
+
+            console.log(name, price, username, address, contact, quantity);
+        }
+    </script>
+
+    <script>
+
+
+        function processEditOrder(element) {
+            var id = element.getAttribute('data-id');
+            var name = element.getAttribute('data-name');
+            var price = element.getAttribute('data-price');
+            var username = element.getAttribute('data-username');
+            var address = element.getAttribute('data-address');
+            var contact = element.getAttribute('data-contact');
+            var quantity = element.getAttribute('data-quantity');
+
+            document.getElementById("orderId").value = id;
+            document.getElementById("productName").value = name;
+            document.getElementById("productPrice").value = price;
+            document.getElementById("username").value = username;
+            document.getElementById("userAddress").value = address;
+            document.getElementById("userContact").value = contact;
+            document.getElementById("quantity").value = quantity;
+
+            // Display the order update form
+            document.getElementById("update-order-form-wrappar").style.display = "flex";
+        }
+    </script>
+
 </head>
 
 <body>
@@ -233,6 +348,7 @@
         </section>
         <section id="orders">
             <div id="orders-table-wrapper">
+
                 <div id="orders-top-bar-wrapper">
                     <div id="search-bar-wrapper">
                         <div id="search-logo"></div>
@@ -262,7 +378,7 @@
                             <th>QUANTITY</th>
                             <th>USERNAME</th>
                             <th>USER ADDRESS</th>
-                            <th>USER CONTACT</th>
+                            <th style= "text-align:left;">USER CONTACT</th>
                         </tr>
                     </thead>
 
@@ -283,20 +399,17 @@
                                 echo "<td>" . $row["QUANTITY"] . "</td>";
                                 echo "<td>" . $row["USERNAME"] . "</td>";
                                 echo "<td>" . $row["USER_ADDRESS"] . "</td>";
-                                echo "<td>" . $row["USER_CONTACT"];
-                                echo "
-                           
-                                <div>
-                                    
-                                    <div id='icon-wrapper'> 
-                                        <form action='../assets/php/processDeleteOrder.php' method='post' id='delete' onclick='processDeleteOrder()'>
-                                            <input type='hidden' name='order_id' value='" . $row["ID"] . "'> 
-                                        </form>
-                                        <div id='edit' data-id='" . $row['ID'] . "' data-name='" . $row['PRODUCT_NAME'] . "' data-price='" . $row['PRODUCT_PRICE'] . "' data-quantity='" . $row['QUANTITY'] . "' data-username='" . $row['USERNAME'] . "' data-address='" . $row['USER_ADDRESS'] . "' data-contact='" . $row['USER_CONTACT'] . "' onclick='processEditOrder(this)'></div>
-                                    </div>
+                                echo "<td> <div> <div>" . $row["USER_CONTACT"] . "</div>";
+                                echo "                                   
+                                <div id='icon-wrapper'>
+                                    <div id='delete' onclick='processDeleteOrder(" . $row['ID'] . ")'></div>
+                                    <div id='edit' data-id='" . $row['ID'] . "' data-name='" . $row['PRODUCT_NAME'] . "' data-price='" . $row['PRODUCT_PRICE'] . "' data-username='" . $row['USERNAME'] . "' data-address='" . $row['USER_ADDRESS'] . "' data-contact='" . $row['USER_CONTACT'] . "' data-quantity='" . $row['QUANTITY'] . "' onclick='processEditOrder(this)'></div>
+                                </div>
+                                
                                 </div></td>
                            
                         ";
+
 
                                 echo "</tr>";
                             }
@@ -305,6 +418,21 @@
                         }
                         ?>
                     </tbody>
+                    <!-- processing delete -->
+                    <form id = "delete_form" action="../assets/php/processDeleteOrder.php" style="display:none;" method = "POST">
+                            <input type="text" name="order_id" id="order_id">
+                        </form>
+                        <script> 
+                            function processDeleteOrder(id){
+                                input = document.getElementById("order_id");
+                                form = document.getElementById("delete_form");
+
+                                input.value = id;
+                                form.submit(); 
+                                
+
+                            }
+                        </script>
                 </table>
             </div>
         </section>
@@ -312,7 +440,7 @@
         <section id="add-orders-form-wrapper" style="display:none;">
             <div id="blurred-background"></div>
             <form action="../assets/php/processAddOrder.php" method="POST">
-                <h1 style="margin: 0;">ADD ORDER</h1>
+                <h1 style="margin: 0; text-align:center;">ADD ORDER</h1>
                 <hr style="border:1px solid white;" width="100%">
                 <input type="text" name="product_name" placeholder="Product Name" required>
                 <input type="text" name="product_price" placeholder="Product Price" required>
@@ -328,6 +456,29 @@
                         }
                     </script>
                     <input type="submit" value="Add Order">
+                </div>
+            </form>
+        </section>
+        <section id="update-order-form-wrappar" style="display:none;">
+            <div id="blurred-background"></div>
+            <form action="../assets/php/processUpdateOrder.php" method="POST">
+                <h1 style="margin: 0;">UPDATE ORDER</h1>
+                <hr style="border:1px solid white;" width="100%">
+                <input type="hidden" id="orderId" name="id">
+                <input type="text" id="productName" name="name" placeholder="Product Name" required>
+                <input type="text" id="productPrice" name="price" placeholder="Product Price" required>
+                <input type="text" id="username" name="username" placeholder="Username" required>
+                <input type="text" id="userAddress" name="user_address" placeholder="User Address" required>
+                <input type="text" id="userContact" name="user_contact" placeholder="User Contact" required>
+                <input type="text" id="quantity" name="quantity" placeholder="Quantity" required>
+                <div>
+                    <button type="button" onclick="updateOrderCancel()">Cancel</button>
+                    <script>
+                        function updateOrderCancel() {
+                            document.getElementById("update-order-form-wrappar").style.display = "none";
+                        }
+                    </script>
+                    <input type="submit" value="Update Order">
                 </div>
             </form>
         </section>
