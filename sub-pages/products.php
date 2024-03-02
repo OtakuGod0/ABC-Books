@@ -159,7 +159,9 @@
             justify-content: space-evenly;
         }
     </style>
-    <?php require("../assets/php/productsDB.php"); ?>
+    <?php 
+        require("../assets/php/productsDB.php"); 
+    ?>
 </head>
 
 <body>

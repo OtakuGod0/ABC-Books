@@ -98,6 +98,7 @@
     require("../assets/php/productsDB.php"); 
     require("../assets/php/userDB.php");
     require("../assets/php/ordersDB.php");
+    require("../assets/php/insertDefaultProducts.php");
   ?>
   
 </head>

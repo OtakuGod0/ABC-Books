@@ -137,6 +137,7 @@
 
         #edit,
         #delete {
+            display:block;
             height: 100%;
             aspect-ratio: 1 / 1;
         }
@@ -314,7 +315,7 @@
         function processEdit(element) {
             var id = element.getAttribute('data-id');
             var name = element.getAttribute('data-name');
-            var price = element.getAttribute('data-price');
+            var price = element.getAttribute('data-price');`
             var stock_quantity = element.getAttribute('data-stock');
             var category = element.getAttribute('data-category'); 
             var product_pic = element.getAttribute('data-pic');
@@ -419,17 +420,14 @@
                                 echo "<td>" . $row["NAME"] . "</td>";
                                 echo "<td> Rs. " . $row["PRICE"] . "</td>";
                                 echo "<td>" . $row["STOCK_QUANTITY"] . "</td>";
-                                echo "<td> <div> <div> " . $row["CATEGORY"];
+                                echo "<td> <div> <div> " . $row["CATEGORY"] . "</div>";
+                                echo "<div id=icon-wrappar>"; 
+                                    echo "<div id='delete' onclick= 'processDelete(". $row["ID"] . ")'> </div>";  
+                                    echo "<div id='edit' data-id='" . $row['ID'] . "' data-name='" . $row['NAME'] . "' data-pic='" . $row['PRODUCT_PIC'] . "' data-price='" . $row['PRICE'] . "' data-stock='" . $row['STOCK_QUANTITY'] . "' data-category='" . $row['CATEGORY'] . "' onclick='processEdit(this)'></div>";
                                 echo "
                                     </div>
-                                    <div id=icon-wrappar> 
-                                        <form action='../assets/php/processDelete.php' method='POST' id='delete' onclick='processDelete()'>
-                                            <input type='hidden' name='product_id' value='" . $row["ID"] . "'> 
-                                        </form>";
-                                echo "<div id='edit' data-id='" . $row['ID'] . "' data-name='" . $row['NAME'] . "' data-pic='" . $row['PRODUCT_PIC'] . "' data-price='" . $row['PRICE'] . "' data-stock='" . $row['STOCK_QUANTITY'] . "' data-category='" . $row['CATEGORY'] . "' onclick='processEdit(this)'></div>";
-                                echo "
                                     </div>
-                                    </td> </div>
+                                    </td> 
                                 ";
 
                                 echo "</tr>";
@@ -441,6 +439,21 @@
                         }
                         ?>
 
+                        <!-- processing delete -->
+                        <form id = "delete_form" action="../assets/php/processDelete.php" style="display:none;" method = "POST">
+                            <input type="text" name="product_id" id="product_id">
+                        </form>
+                        <script> 
+                            function processDelete(id){
+                                input = document.getElementById("product_id");
+                                form = document.getElementById("delete_form");
+
+                                input.value = id;
+                                form.submit(); 
+                                
+
+                            }
+                        </script>
                     </tbody>
                 </table>
             </div>
