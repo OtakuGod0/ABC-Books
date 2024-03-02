@@ -126,6 +126,75 @@
         #orders-table-wrapper tr:hover #edit {
             background: url("../assets/img/icons/edit.svg") no-repeat center / cover;
         }
+
+        /* Add Orders Css */
+        #add-orders-form-wrapper {
+            overflow: hidden;
+            height: 100vh;
+            width: 100vw;
+            position: fixed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #add-orders-form-wrapper #blurred-background {
+            z-index: -1;
+            position: absolute;
+            margin: 0px;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 100%;
+            background-color: black;
+            filter: blur(220px);
+        }
+
+        #add-orders-form-wrapper form div {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        #add-orders-form-wrapper form {
+            display: flex;
+            width: 40vw !important;
+            flex-direction: column;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 40px;
+            border-radius: 30px;
+            color: white;
+        }
+
+        #add-orders-form-wrapper input[type="text"] {
+            border: 5px solid white;
+            border-radius: 7px;
+            background: white;
+            height: 20px;
+            padding: 5px;
+        }
+
+        #add-orders-form-wrapper form>* {
+            margin: 5px 0;
+        }
+
+        #add-orders-form-wrapper form div:last-child {
+            display: flex;
+            justify-content: right;
+            gap: 5px;
+        }
+
+        #add-orders-form-wrapper form div:last-child>* {
+            padding: 9px 15px;
+            border: 3px solid black;
+            border-radius: 7px;
+            color: white;
+            background-color: black;
+        }
+
+        #add-orders-form-wrapper form div:last-child>*:hover {
+            outline: 1px solid white;
+            cursor: pointer;
+        }
     </style>
     <script src="assets/js/script.js"></script>
 </head>
@@ -178,9 +247,11 @@
 
                     <script>
                         function addOrder() {
-                            // Add your logic to display the add order form
+                            var addOrdersSection = document.getElementById("add-orders-form-wrapper");
+                            addOrdersSection.style.display = "flex";
                         }
                     </script>
+
                 </div>
                 <table id="orders-table">
                     <thead>
@@ -236,6 +307,29 @@
                     </tbody>
                 </table>
             </div>
+        </section>
+
+        <section id="add-orders-form-wrapper" style="display:none;">
+            <div id="blurred-background"></div>
+            <form action="../assets/php/processAddOrder.php" method="POST">
+                <h1 style="margin: 0;">ADD ORDER</h1>
+                <hr style="border:1px solid white;" width="100%">
+                <input type="text" name="product_name" placeholder="Product Name" required>
+                <input type="text" name="product_price" placeholder="Product Price" required>
+                <input type="text" name="username" placeholder="Username" required>
+                <input type="text" name="user_address" placeholder="User Address" required>
+                <input type="text" name="user_contact" placeholder="User Contact" required>
+                <input type="text" name="quantity" placeholder="Quantity" required>
+                <div>
+                    <button type="button" onclick="addOrderCancel()">Cancel</button>
+                    <script>
+                        function addOrderCancel() {
+                            document.getElementById("add-orders-form-wrapper").style.display = "none";
+                        }
+                    </script>
+                    <input type="submit" value="Add Order">
+                </div>
+            </form>
         </section>
 
 
