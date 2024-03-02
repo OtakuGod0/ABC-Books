@@ -3,15 +3,14 @@
 
 <head>
     <title>ABC Books</title>
-    <?php 
-        if (!isset($_COOKIE["username"])){
-            header('Location: sub-pages/login.php');
-            exit;
-        }
-        ?>
+    <?php
+    if (!isset($_COOKIE["username"])) {
+        header('Location: sub-pages/login.php');
+        exit;
+    }
+    ?>
     <link rel="stylesheet" href="assets/css/global.css">
     <style>
-
         #home {
             height: 100vh;
             margin: 0px;
@@ -49,15 +48,27 @@
         .content-wrapper p {
             text-align: justify;
         }
-        #about-us-img{
+
+        #about-us-img {
             background: url("assets/img/home-page/About-us-side.jpg") no-repeat center / cover;
         }
-        #services-img { 
+
+        #services-img {
             background: url("assets/img/home-page/services-side.jpg") no-repeat center / cover;
 
         }
     </style>
     <script src="assets/js/script.js"></script>
+    <?php
+    if (!isset($_COOKIE['initialized'])) {
+        require("assets/php/productsDB.php");
+        require("assets/php/userDB.php");
+        require("assets/php/ordersDB.php");
+        require("assets/php/insertDefaultProducts.php");
+
+        setcookie('initialized', 'true', time() + 3600, "/"); // Set the cookie to last for a year
+    }
+    ?>
 </head>
 
 <body>
@@ -77,9 +88,9 @@
             </ul>
         </nav>
         <div class="login-wrapper">
-            <a href="sub-pages/login.php" id="login" class="rounded-button"> 
-                <?php 
-                    echo isset($_COOKIE["username"]) ? $_COOKIE["username"]: "Login" ; ?>
+            <a href="sub-pages/login.php" id="login" class="rounded-button">
+                <?php
+                echo isset($_COOKIE["username"]) ? $_COOKIE["username"] : "Login"; ?>
             </a>
         </div>
     </header>
@@ -87,7 +98,8 @@
         <section id="home" class="background">
             <div class="home-content-wrapper" style="text-align:center;">
                 <h1 class="company-name" style="font-size:50px; margin:0px;height:80px;">ABC BOOKS</h1>
-                <h6 class="company-quote" style="font-size:20px; margin:0px;margin-bottom:10px;">Your satisfaction is our priority</h6>
+                <h6 class="company-quote" style="font-size:20px; margin:0px;margin-bottom:10px;">Your satisfaction is
+                    our priority</h6>
                 <div class="learn-more-button-wrapper"><a href="#contact" class="rounded-button">
                         Learn more
                     </a>
@@ -113,12 +125,13 @@
                 <article>
                     <h1 style="text-align:right;">OUR SERVICES</h1>
                     <nav>
-                    <ul>
-                        <li><a href="sub-pages/survey.html">Join our survey</a></li>
-                        <li><a href="sub-pages/products.php#products">Products</a></li>
-                        <li><a href="sub-pages/preordered-printing.html">Pre ordered printing</a></li>
-                        <li><a href="sub-pages/orders.php#orders-table">Orders</a></li>
-                    </ul></nav>
+                        <ul>
+                            <li><a href="sub-pages/survey.html">Join our survey</a></li>
+                            <li><a href="sub-pages/products.php#products">Products</a></li>
+                            <li><a href="sub-pages/preordered-printing.html">Pre ordered printing</a></li>
+                            <li><a href="sub-pages/orders.php#orders-table">Orders</a></li>
+                        </ul>
+                    </nav>
                 </article>
             </div>
             <div class="content-img-wrapper" id="services-img"></div>
@@ -141,17 +154,17 @@
                 <section class="footer-content">
                     <div class="subscription-form-wrapper">
                         <h1>SUBSCRIBE NOW TO GET OUR SPECIAL OFFERS</h1>
-                        <form action="assets/php/processEmail.php" method="POST" onsubmit= "return  validateEmail()">
+                        <form action="assets/php/processEmail.php" method="POST" onsubmit="return  validateEmail()">
                             <input type="email" placeholder="Email" id="email" name="email">
                             <input type="submit" value="Submit">
                         </form>
                         <script>
-                            function validateEmail(){
+                            function validateEmail() {
                                 email = document.getElementById("email")
-                                if(!emailRegex.test(email.value)) {
+                                if (!emailRegex.test(email.value)) {
                                     email.classLists.add("error");
                                     return false;
-                                
+
                                 }
                                 else return true;
                             }
@@ -177,4 +190,5 @@
         </footer>
     </div>
 </body>
+
 </html>
