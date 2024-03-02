@@ -8,7 +8,7 @@ if (isset($_POST["product_id"])) {
     $sqldelete = "DELETE FROM $tbname WHERE ID = $id"; 
 
     if($conn->query($sqldelete)){
-        header("Location: ../../sub-pages/products_DB.php");
+        header("Location: ../../sub-pages/products_DB.php#products");
         exit;
     }   
     else {

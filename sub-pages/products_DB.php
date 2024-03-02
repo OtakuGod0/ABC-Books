@@ -187,6 +187,7 @@
 
         #add-product-form-wrappar form {
             display: flex;
+            width: 40vw !important;
             flex-direction: column;
             background-color: rgba(0, 0, 0, 0.5);
             padding: 40px;
