@@ -315,7 +315,7 @@
         function processEdit(element) {
             var id = element.getAttribute('data-id');
             var name = element.getAttribute('data-name');
-            var price = element.getAttribute('data-price');`
+            var price = element.getAttribute('data-price');
             var stock_quantity = element.getAttribute('data-stock');
             var category = element.getAttribute('data-category'); 
             var product_pic = element.getAttribute('data-pic');
