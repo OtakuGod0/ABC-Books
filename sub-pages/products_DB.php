@@ -459,7 +459,7 @@
         <section id="add-product-form-wrappar" style="display:none;">
             <div id="blurred-background"></div>
             <form action="../assets/php/processAddProduct.php" method="POST">
-                <h1 style="margin: 0;">ADD PRODUCT</h1>
+                <h1 style="margin: 0; text-align:center;">ADD PRODUCT</h1>
                 <hr style="border:1px solid white;" width="100%">
                 <input type="text" name="name" placeholder="Product Name" required>
                 <input type="text" name="price" placeholder="Product Price" required>

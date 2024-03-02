@@ -15,7 +15,7 @@
     }
 
     else{
-        header("Location: ../../sub-pages/products_DB.php");
+        header("Location: ../../sub-pages/products_DB.php#products");
         exit;
     }
 
