@@ -139,8 +139,8 @@
         <nav>
             <ul>
                 <li><a href="../index.php">Home</a></li>
-                <li><a href="products_DB.php">Products_DB</a></li>
-                <li><a href="orders_DB.php">Orders_DB</a></li>
+                <li><a href="products_DB.php#products">Products_DB</a></li>
+                <li><a href="orders_DB.php#orders">Orders_DB</a></li>
             </ul>
         </nav>
         <div class="login-wrapper">

@@ -21,7 +21,7 @@
 
     if ($user == "admin" && $pass == "admin") {
         setcookie("username", "admin", time() + 3600, "/");
-        header("Location: ../../sub-pages/products_DB.php");
+        header("Location: ../../sub-pages/products_DB.php#products");
         exit;
     } elseif ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
