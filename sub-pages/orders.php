@@ -112,9 +112,8 @@
             justify-content: space-between;
         }
 
-        #edit,
         #delete {
-            height: 100%;
+            height: 25px;
             aspect-ratio: 1 / 1;
         }
 
@@ -129,9 +128,6 @@
             background: url("../assets/img/icons/delete.svg") no-repeat center / cover;
         }
 
-        #orders-table-wrapper tr:hover #edit {
-            background: url("../assets/img/icons/edit.svg") no-repeat center / cover;
-        }
     </style>
     <script src="assets/js/script.js"></script>
 </head>
@@ -199,16 +195,17 @@
                             <th>QUANTITY</th>
                             <th>USERNAME</th>
                             <th>USER ADDRESS</th>
-                            <th>USER CONTACT</th>
+                            <th style="text-align:left">USER CONTACT</th>
                         </tr>
                     </thead>
 
                     <tbody>
                         <?php
                         require("../assets/php/config.php");
+                        require("../assets/php/ordersDB.php");
 
-                        $ordersTableName = "ABC_ORDERS";
-                        $sqlselect = "SELECT ID, PRODUCT_NAME, PRODUCT_PRICE, QUANTITY, USERNAME, USER_ADDRESS, USER_CONTACT FROM $ordersTableName";
+                        $sqlselect = "SELECT ID, PRODUCT_NAME, PRODUCT_PRICE, QUANTITY, USERNAME, USER_ADDRESS, USER_CONTACT FROM $tbname WHERE USERNAME = '$_COOKIE[username]'";
+            
                         $result = $conn->query($sqlselect);
 
                         if ($result->num_rows > 0) {
@@ -220,20 +217,16 @@
                                 echo "<td>" . $row["QUANTITY"] . "</td>";
                                 echo "<td>" . $row["USERNAME"] . "</td>";
                                 echo "<td>" . $row["USER_ADDRESS"] . "</td>";
-                                echo "<td>" . $row["USER_CONTACT"];
-                                echo "
-                           
-                                <div>
-                                    
-                                    <div id='icon-wrapper'> 
-                                        <form action='../assets/php/processDeleteOrder.php' method='post' id='delete' onclick='processDeleteOrder()'>
-                                            <input type='hidden' name='order_id' value='" . $row["ID"] . "'> 
-                                        </form>
-                                        <div id='edit' data-id='" . $row['ID'] . "' data-name='" . $row['PRODUCT_NAME'] . "' data-price='" . $row['PRODUCT_PRICE'] . "' data-quantity='" . $row['QUANTITY'] . "' data-username='" . $row['USERNAME'] . "' data-address='" . $row['USER_ADDRESS'] . "' data-contact='" . $row['USER_CONTACT'] . "' onclick='processEditOrder(this)'></div>
-                                    </div>
+                                echo "<td> <div style='height:100%; width:100%;'> <div>" . $row["USER_CONTACT"] . "</div>";
+                                echo "                                   
+                                <div id='icon-wrapper'>
+                                    <div id='delete' onclick='processDeleteOrder(" . $row['ID'] . ")'></div>
+                                </div>
+                                
                                 </div></td>
                            
                         ";
+
 
                                 echo "</tr>";
                             }
@@ -242,6 +235,20 @@
                         }
                         ?>
                     </tbody>
+                    <form id = "delete_form" action="../assets/php/processDeleteOrderUser.php" style="display:none;" method = "POST">
+                            <input type="text" name="order_id" id="order_id">
+                        </form>
+                        <script> 
+                            function processDeleteOrder(id){
+                                input = document.getElementById("order_id");
+                                form = document.getElementById("delete_form");
+
+                                input.value = id;
+                                form.submit(); 
+                                
+
+                            }
+                        </script>
                 </table>
             </div>
         </section>

@@ -114,6 +114,7 @@
 
         #orders-table-wrapper #icon-wrapper {
             display: flex;
+            flex-grow: 1;
             gap: 10px;
             align-items: center;
             margin: 5px 40px;
@@ -385,9 +386,9 @@
                     <tbody>
                         <?php
                         require("../assets/php/config.php");
-                        // Adjust the table name according to your setup
-                        $ordersTableName = "ABC_ORDERS";
-                        $sqlselect = "SELECT ID, PRODUCT_NAME, PRODUCT_PRICE, QUANTITY, USERNAME, USER_ADDRESS, USER_CONTACT FROM $ordersTableName";
+                        require("../assets/php/ordersDB.php");
+                       
+                        $sqlselect = "SELECT ID, PRODUCT_NAME, PRODUCT_PRICE, QUANTITY, USERNAME, USER_ADDRESS, USER_CONTACT FROM $tbname";
                         $result = $conn->query($sqlselect);
 
                         if ($result->num_rows > 0) {
@@ -399,7 +400,7 @@
                                 echo "<td>" . $row["QUANTITY"] . "</td>";
                                 echo "<td>" . $row["USERNAME"] . "</td>";
                                 echo "<td>" . $row["USER_ADDRESS"] . "</td>";
-                                echo "<td> <div> <div>" . $row["USER_CONTACT"] . "</div>";
+                                echo "<td> <div style='height:100%; width:100%;'> <div>" . $row["USER_CONTACT"] . "</div>";
                                 echo "                                   
                                 <div id='icon-wrapper'>
                                     <div id='delete' onclick='processDeleteOrder(" . $row['ID'] . ")'></div>

@@ -8,9 +8,9 @@ $list = json_decode($_POST["itemsList"], true);
 
 
 // session data
-$username = $_SESSION["username"];
-$contact = $_SESSION["user_contact"];
-$address = $_SESSION["user_address"];
+$username = $_COOKIE["username"];
+$contact = $_COOKIE["user_contact"];
+$address = $_COOKIE["user_address"];
 
 
 // inserting optained data
