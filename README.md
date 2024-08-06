@@ -1,5 +1,6 @@
 # ABC-Books
-In this project, I develop a simple web application using HTML, CSS, PHP and JavaScript to build a basic ecommerce site for ABC Books and Stationaries. I used HTML and CSS for the user interface, PHP for server-side scripting and JavaScript for client-side interaction and to handle buy logic. This project aims to develop a ecommerce site using CRUD operations which are basic functions of persistent storage.
+In this project, I developed a simple web application for ABC Books and Stationeries using HTML, CSS, PHP, and JavaScript to build a basic e-commerce site. HTML and CSS were used for the user interface, PHP for server-side scripting, and JavaScript for client-side interactions and handling the 'Buy' logic. The project focuses on implementing an e-commerce site with CRUD operations, which are fundamental for persistent storage.
+
 
 # Home page
 ![home1](./Screenshots/home1.png)
